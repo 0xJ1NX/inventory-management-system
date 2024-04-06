@@ -100,20 +100,20 @@ the following are the resources in the inventory management system API
 ```json
 {
  "items": [
- { 
- "id": 1, 
- "name": "item1", 
- "description": "item1 description", 
- "price": 100, 
- "quantity": 10 
- }, 
- { 
- "id": 2, 
- "name": "item2", 
- "description": "item2 description", 
- "price": 200, 
- "quantity": 20 
- } 
+    { 
+    "id": 1, 
+    "name": "item1", 
+    "description": "item1 description", 
+    "price": 100, 
+    "quantity": 10 
+    }, 
+    { 
+     "id": 2, 
+    "name": "item2", 
+    "description": "item2 description", 
+    "price": 200, 
+    "quantity": 20 
+    } 
  ] 
  }
 ```
