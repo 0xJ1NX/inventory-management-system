@@ -4,7 +4,7 @@
   <img src="./images/inv-manage-sys.png" alt="Inventory Management System logo" width="300" >
 </p>
 
-This is a simple inventory management system REST API, it allow managing Items, Customers, Orders, Suppliers, and supplies.
+This is a simple inventory management system REST API, that allow managing Items, Customers, Orders, Suppliers, and supplies.
 
 > NOTE: The API still under development and the documentation is not complete yet.
 
@@ -16,6 +16,19 @@ This is a simple inventory management system REST API, it allow managing Items, 
     <a href="">
         <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white" />
     </a>
+    <a href="">
+        <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
+    </a>
+    <a href="">
+        <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" />
+    </a>
+    <a href="">
+        <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
+    </a>
+    <a href="">
+        <img src="https://img.shields.io/badge/RESTful-000000?style=for-the-badge&logo=rest&logoColor=white" />
+    </a>
+    
 </p>
 <br>
 <p align="center">
