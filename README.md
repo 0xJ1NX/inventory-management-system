@@ -13,11 +13,17 @@ This is a simple inventory management system REST API, it allow managing Items, 
     <a href="https://github.com/0xJ1NX">
         <img src="https://img.shields.io/badge/Author-0xJ1NX-blue" />
     </a>
-    <img src="https://img.shields.io/badge/Version-0.1.0-yellow" />
     <a href="">
         <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white" />
     </a>
 </p>
+<br>
+<p align="center">
+    <a href="https://www.buymeacoffee.com/om4r"></a>
+        <img src="https://img.shields.io/badge/Buy%20me%20a%20coffee-donate-yellow?style=for-the-badge&logo=buy-me-a-coffee" />
+    </a>
+</p>
+
 
 
 
