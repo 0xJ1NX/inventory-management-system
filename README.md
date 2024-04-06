@@ -1297,4 +1297,3 @@ the following are the resources in the inventory management system API
 ## 📦 Installation
 >[!IMPORTANT]
 > comming soon
-
