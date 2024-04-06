@@ -60,28 +60,48 @@ the following are the resources in the inventory management system API
 
 `Base URL : example.com/api/v1`
 
+
 <style>
-table th:first-of-type {
-    width: 10%
+.cus_table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin-top: 20px;
 }
-table th:nth-of-type(2) {
-    width: 10%
+
+.cus_table th, .cus_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
 }
-table th:nth-of-type(3) {
-    width: 10%
+
+.cus_table th {
+    background-color: #f2f2f2;
 }
-table th:nth-of-type(4) {
-    width: 10%
+
+.cus_table tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
-table th:nth-of-type(5) {
-    width: 10%
+
+.cus_table tr:hover {
+    background-color: #f2f2f2;
 }
-table th:nth-of-type(6) {
-    width: 50%
+
+.cus_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
 }
+
 </style>
 
+
+
 ### /items
+
+<div class="cus_table">
 
 | HTTP Request | Operation | Description | HTTP Status Code | Request Body Sample | Response Body Sample |
 | ------------ | --------- | ----------- | ---------------- | -------------- | --------------- |
@@ -92,7 +112,13 @@ table th:nth-of-type(6) {
 | DELETE /items/{id} | Delete | Delete item by id | 204 (No Content) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 500(Internal Server Error) | N/A | N/A |
 | PATCH /items/{id} | Partial Update | Partial Update item by id | 200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error) | <br><pre lang="json">{&#13; "name": "item1" &#13; }</pre> <br> | <br><pre lang="json">{&#13; "item": {&#13; "id": 1, &#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; "quantity": 10 &#13; } &#13; }</pre> <br> |
 
+
+</div>
+
+
 ### /suppliers
+
+
 
 | HTTP Request | Operation | Description | HTTP Status Code | Request Body Sample | Response Body Sample |
 | ------------ | --------- | ----------- | ---------------- | -------------- | --------------- |
