@@ -9,18 +9,19 @@ This is a simple inventory management system REST API, it allow managing Items, 
 > NOTE: The API still under development and the documentation is not complete yet.
 
 
+<p align="center">
+    <a href="https://github.com/0xJ1NX">
+        <img src="https://img.shields.io/badge/Author-0xJ1NX-blue" />
+    </a>
+    <a href="">
+        <img src="https://img.shields.io/badge/Version-0.1.0-yellow" />
+    </a>
+    <a href="">
+        <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white" />
+    </a>
+</p>
 
-<a href="https://github.com/0xJ1NX">
-  <img src="https://img.shields.io/badge/Author-0xJ1NX-blue" />
-</a>
 
-<a href="">
-    <img src="https://img.shields.io/badge/Version-0.1.0-yellow" />
-</a>
-
-<a href="">
-    <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white" />
-</a>
 
 
 ## 📝 Table of Contents
