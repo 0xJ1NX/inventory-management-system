@@ -2,7 +2,7 @@
 
 This is a simple inventory management system REST API, it allow managing Items, Customers, Orders, Suppliers, and supplies.
 
-> The API still under development and the documentation is not complete yet.
+> NOTE: The API still under development and the documentation is not complete yet.
 
 
 ## 📝 Table of Contents
