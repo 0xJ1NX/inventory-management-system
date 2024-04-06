@@ -146,6 +146,38 @@ the following are the resources in the inventory management system API
     <tr>
 <td>
 
+`GET /items/{id}/suppliers`
+</td>
+        <td>Read</td>
+        <td>Get all suppliers of an item</td>
+        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
+        <td>N/A</td>
+<td>
+
+```json
+{
+    "suppliers": [
+        {
+            "id": 1,
+            "name": "supplier1",
+            "email": "supp@gmail.com",
+            "phone": "123456789"
+        },
+        {
+            "id": 2,
+            "name": "supplier2",
+            "email": "supp2@gmail.com",
+            "phone": "123456789"
+        }
+    ]
+}
+```
+
+</td>
+    </tr>
+    <tr>
+<td>
+
 `POST /items`
 </td>
         <td>Create</td>
@@ -172,38 +204,6 @@ the following are the resources in the inventory management system API
         "price": 100,
         "quantity": 10
     }
-}
-```
-
-</td>
-    </tr>
-    <tr>
-<td>
-
-`GET /items/{id}/suppliers`
-</td>
-        <td>Read</td>
-        <td>Get all suppliers of an item</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
-        <td>N/A</td>
-<td>
-
-```json
-{
-    "suppliers": [
-        {
-            "id": 1,
-            "name": "supplier1",
-            "email": "supp@gmail.com",
-            "phone": "123456789"
-        },
-        {
-            "id": 2,
-            "name": "supplier2",
-            "email": "supp2@gmail.com",
-            "phone": "123456789"
-        }
-    ]
 }
 ```
 
