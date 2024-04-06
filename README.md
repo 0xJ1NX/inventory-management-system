@@ -517,13 +517,13 @@ the following are the resources in the inventory management system API
         <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
     
-    ```json
-    {
-        "name": "supplier1",
-        "email": "supp@gmail.com",
-        "phone": "123456789"
-    }
-    ```
+```json
+{
+    "name": "supplier1",
+    "email": "supp@gmail.com",
+    "phone": "123456789"
+}
+```
 </td>
 <td>
 
@@ -968,13 +968,13 @@ the following are the resources in the inventory management system API
         <td>201 (Created) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
     
-    ```json
-    {
-        "item_id": 1,
-        "customer_id": 1,
-        "quantity": 10
-    }
-    ```
+```json
+{
+    "item_id": 1,
+    "customer_id": 1,
+    "quantity": 10
+}
+```
 </td>
 <td>
 
