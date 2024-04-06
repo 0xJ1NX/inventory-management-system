@@ -1,11 +1,11 @@
 # inventory-management-system
 
 ## 📝 Table of Contents
-- [📝 Table of Contents](#📝-table-of-contents)
+- [📝 Table of Contents](#-table-of-contents)
 - [ℹ Description](#ℹ-description)
-- [🧰 Resources](#🧰-resources)
-- [✏ ERD's and Diagrams](#✏-erds-and-diagrams)
-- [📋 API Endpoints and Documentation](#📋-api-endpoints-and-documentation)
+- [🧰 Resources](#-resources)
+- [✏ ERD's and Diagrams](#-erds-and-diagrams)
+- [📋 API Endpoints and Documentation](#-api-endpoints-and-documentation)
   - [/items](#items)
   - [/suppliers](#suppliers)
   - [/customers](#customers)
