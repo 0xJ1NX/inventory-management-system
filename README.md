@@ -16,19 +16,8 @@ This is a simple inventory management system REST API, that allow managing Items
     <a href="">
         <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white" />
     </a>
-    <a href="">
-        <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
-    </a>
-    <a href="">
-        <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" />
-    </a>
-    <a href="">
-        <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
-    </a>
-    <a href="">
-        <img src="https://img.shields.io/badge/RESTful-000000?style=for-the-badge&logo=rest&logoColor=white" />
-    </a>
-    
+    <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" />
+    <img src="https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot" />
 </p>
 <br>
 <p align="center">
