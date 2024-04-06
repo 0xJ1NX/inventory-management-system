@@ -62,6 +62,8 @@ the following are the resources in the inventory management system API
 
 ### /items
 
+<sub>
+
 | HTTP Request | Operation | Description | HTTP Status Code | Request Body Sample | Response Body Sample |
 | ------------ | --------- | ----------- | ---------------- | -------------- | --------------- |
 | `GET /items`    | Read | Get all items | 200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error) | N/A | <br><pre lang="json">{&#13; "items": [&#13; {&#13; "id": 1, &#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; "quantity": 10 &#13; }, &#13; {&#13; "id": 2, &#13; "name": "item2", &#13; "description": "item2 description", &#13; "price": 200, &#13; "quantity": 20 &#13; } &#13; ] &#13; }</pre> <br> |
@@ -70,6 +72,8 @@ the following are the resources in the inventory management system API
 | `PUT /items/{id}` | Update | Update item by id | 200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error) | <br><pre lang="json">{&#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; }</pre> <br> | <br><pre lang="json">{&#13; "item": {&#13; "id": 1, &#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; "quantity": 10 &#13; } &#13; }</pre> <br> |
 | `DELETE /items/{id}` | Delete | Delete item by id | 204 (No Content) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 410 (Gone) <br> 429(Too Many Requests) <br> 500(Internal Server Error) | N/A | N/A |
 | `PATCH /items/{id}` | Partial Update | Partial Update item by id | 200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error) | <br><pre lang="json">{&#13; "name": "item1" &#13; }</pre> <br> | <br><pre lang="json">{&#13; "item": {&#13; "id": 1, &#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; "quantity": 10 &#13; } &#13; }</pre> <br> |
+
+</sub>
 
 
 ### /suppliers
