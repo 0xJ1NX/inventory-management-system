@@ -63,7 +63,7 @@ the following are the resources in the inventory management system API
 
 `Base URL : example.com/api/v1`
 
-### /items
+#### /items
 
 
 <!-- | HTTP Request | Operation | Description | HTTP Status Code | Request Body Sample | Response Body Sample |
