@@ -13,6 +13,7 @@
   - [/supplies](#supplies)
 
 
+
 ## ℹ Description
 This is a simple inventory management system REST API, it allow managing Items, Customers, Orders, Suppliers, and supplies, it is still under development.
 
