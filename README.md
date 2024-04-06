@@ -1,8 +1,14 @@
 # inventory-management-system
 
+![Logo](./images/inv-manage-sys.png)
+
 This is a simple inventory management system REST API, it allow managing Items, Customers, Orders, Suppliers, and supplies.
 
 > NOTE: The API still under development and the documentation is not complete yet.
+
+
+![Static author Badge](https://img.shields.io/badge/Author-%400xJ1NX-blue)(https://github.com/0xJ1NX)
+![swagger Badge](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white)()
 
 
 ## 📝 Table of Contents
