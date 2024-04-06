@@ -13,9 +13,7 @@ This is a simple inventory management system REST API, it allow managing Items, 
     <a href="https://github.com/0xJ1NX">
         <img src="https://img.shields.io/badge/Author-0xJ1NX-blue" />
     </a>
-    <a href="">
-        <img src="https://img.shields.io/badge/Version-0.1.0-yellow" />
-    </a>
+    <img src="https://img.shields.io/badge/Version-0.1.0-yellow" />
     <a href="">
         <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white" />
     </a>
