@@ -36,7 +36,6 @@ This is a simple inventory management system REST API, that allow managing Items
   - [/orders](#orders)
   - [/supplies](#supplies)
 - [📦 Installation](#-installation)
-- [🚀 Usage](#-usage)
 
 
 ## 🧰 Resources
@@ -1293,4 +1292,9 @@ the following are the resources in the inventory management system API
 
 
 - The OpenAPI v3.1.0 is available in the following link [SwaggerHub]()
+
+
+## 📦 Installation
+>[!IMPORTANT]
+> comming soon
 
