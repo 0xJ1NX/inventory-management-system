@@ -77,39 +77,39 @@ the following are the resources in the inventory management system API
         <td>`GET /items`</td>
         <td>Read</td>
         <td>Get all items</td>
-        <td>200 (OK) &lt;br&gt; 401 (Unauthorized) &lt;br&gt; 403 (Forbidden) &lt;br&gt; 429(Too Many Requests) &lt;br&gt; 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
-        <td>&lt;br&gt;&lt;pre lang=&quot;json&quot;&gt;{&amp;#13; &quot;items&quot;: [&amp;#13; {&amp;#13; &quot;id&quot;: 1, &amp;#13; &quot;name&quot;: &quot;item1&quot;, &amp;#13; &quot;description&quot;: &quot;item1 description&quot;, &amp;#13; &quot;price&quot;: 100, &amp;#13; &quot;quantity&quot;: 10 &amp;#13; }, &amp;#13; {&amp;#13; &quot;id&quot;: 2, &amp;#13; &quot;name&quot;: &quot;item2&quot;, &amp;#13; &quot;description&quot;: &quot;item2 description&quot;, &amp;#13; &quot;price&quot;: 200, &amp;#13; &quot;quantity&quot;: 20 &amp;#13; } &amp;#13; ] &amp;#13; }&lt;/pre&gt; &lt;br&gt;</td>
+        <td><br><pre lang="json">{&#13; "items": [&#13; {&#13; "id": 1, &#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; "quantity": 10 &#13; }, &#13; {&#13; "id": 2, &#13; "name": "item2", &#13; "description": "item2 description", &#13; "price": 200, &#13; "quantity": 20 &#13; } &#13; ] &#13; }</pre> <br></td>
     </tr>
     <tr>
         <td>`GET /items/{id}`</td>
         <td>Read</td>
         <td>Get item by id</td>
-        <td>200 (OK) &lt;br&gt; 401 (Unauthorized)&lt;br&gt; 403 (Forbidden)&lt;br&gt; 404 (Not Found)&lt;br&gt; 429(Too Many Requests)&lt;br&gt; 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 401 (Unauthorized)<br> 403 (Forbidden)<br> 404 (Not Found)<br> 429(Too Many Requests)<br> 500(Internal Server Error)</td>
         <td>N/A</td>
-        <td>&lt;br&gt;&lt;pre lang=&quot;json&quot;&gt;{&amp;#13; &quot;item&quot;: {&amp;#13; &quot;id&quot;: 1, &amp;#13; &quot;name&quot;: &quot;item1&quot;, &amp;#13; &quot;description&quot;: &quot;item1 description&quot;, &amp;#13; &quot;price&quot;: 100, &amp;#13; &quot;quantity&quot;: 10 &amp;#13; } &amp;#13; }&lt;/pre&gt; &lt;br&gt;</td>
+        <td><br><pre lang="json">{&#13; "item": {&#13; "id": 1, &#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; "quantity": 10 &#13; } &#13; }</pre> <br></td>
     </tr>
     <tr>
         <td>`POST /items`</td>
         <td>Create</td>
         <td>Create new item the quantity initiale zero</td>
-        <td>201 (Created) &lt;br&gt; 401 (Unauthorized) &lt;br&gt; 403 (Forbidden) &lt;br&gt; 429(Too Many Requests) &lt;br&gt; 415 (Unsupported Media Type) &lt;br&gt; 500(Internal Server Error)</td>
-        <td>&lt;br&gt;&lt;pre lang=&quot;json&quot;&gt;{&amp;#13; &quot;name&quot;: &quot;item1&quot;, &amp;#13; &quot;description&quot;: &quot;item1 description&quot;, &amp;#13; &quot;price&quot;: 100, &amp;#13; }&lt;/pre&gt; &lt;br&gt;</td>
-        <td>&lt;br&gt;&lt;pre lang=&quot;json&quot;&gt;{&amp;#13; &quot;item&quot;: {&amp;#13; &quot;id&quot;: 1, &amp;#13; &quot;name&quot;: &quot;item1&quot;, &amp;#13; &quot;description&quot;: &quot;item1 description&quot;, &amp;#13; &quot;price&quot;: 100, &amp;#13; &quot;quantity&quot;: 10 &amp;#13; } &amp;#13; }&lt;/pre&gt; &lt;br&gt;</td>
+        <td>201 (Created) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td><br><pre lang="json">{&#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; }</pre> <br></td>
+        <td><br><pre lang="json">{&#13; "item": {&#13; "id": 1, &#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; "quantity": 10 &#13; } &#13; }</pre> <br></td>
     </tr>
     <tr>
         <td>`PUT /items/{id}`</td>
         <td>Update</td>
         <td>Update item by id</td>
-        <td>200 (OK) &lt;br&gt; 401 (Unauthorized) &lt;br&gt; 403 (Forbidden) &lt;br&gt; 404 (Not Found) &lt;br&gt; 429(Too Many Requests) &lt;br&gt; 415 (Unsupported Media Type) &lt;br&gt; 500(Internal Server Error)</td>
-        <td>&lt;br&gt;&lt;pre lang=&quot;json&quot;&gt;{&amp;#13; &quot;name&quot;: &quot;item1&quot;, &amp;#13; &quot;description&quot;: &quot;item1 description&quot;, &amp;#13; &quot;price&quot;: 100, &amp;#13; }&lt;/pre&gt; &lt;br&gt;</td>
-        <td>&lt;br&gt;&lt;pre lang=&quot;json&quot;&gt;{&amp;#13; &quot;item&quot;: {&amp;#13; &quot;id&quot;: 1, &amp;#13; &quot;name&quot;: &quot;item1&quot;, &amp;#13; &quot;description&quot;: &quot;item1 description&quot;, &amp;#13; &quot;price&quot;: 100, &amp;#13; &quot;quantity&quot;: 10 &amp;#13; } &amp;#13; }&lt;/pre&gt; &lt;br&gt;</td>
+        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td><br><pre lang="json">{&#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; }</pre> <br></td>
+        <td><br><pre lang="json">{&#13; "item": {&#13; "id": 1, &#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; "quantity": 10 &#13; } &#13; }</pre> <br></td>
     </tr>
     <tr>
         <td>`DELETE /items/{id}`</td>
         <td>Delete</td>
         <td>Delete item by id</td>
-        <td>204 (No Content) &lt;br&gt; 401 (Unauthorized) &lt;br&gt; 403 (Forbidden) &lt;br&gt; 404 (Not Found) &lt;br&gt; 410 (Gone) &lt;br&gt; 429(Too Many Requests) &lt;br&gt; 500(Internal Server Error)</td>
+        <td>204 (No Content) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 410 (Gone) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
         <td>N/A</td>
     </tr>
@@ -117,9 +117,9 @@ the following are the resources in the inventory management system API
         <td>`PATCH /items/{id}`</td>
         <td>Partial Update</td>
         <td>Partial Update item by id</td>
-        <td>200 (OK) &lt;br&gt; 401 (Unauthorized) &lt;br&gt; 403 (Forbidden) &lt;br&gt; 404 (Not Found) &lt;br&gt; 429(Too Many Requests) &lt;br&gt; 415 (Unsupported Media Type) &lt;br&gt; 500(Internal Server Error)</td>
-        <td>&lt;br&gt;&lt;pre lang=&quot;json&quot;&gt;{&amp;#13; &quot;name&quot;: &quot;item1&quot; &amp;#13; }&lt;/pre&gt; &lt;br&gt;</td>
-        <td>&lt;br&gt;&lt;pre lang=&quot;json&quot;&gt;{&amp;#13; &quot;item&quot;: {&amp;#13; &quot;id&quot;: 1, &amp;#13; &quot;name&quot;: &quot;item1&quot;, &amp;#13; &quot;description&quot;: &quot;item1 description&quot;, &amp;#13; &quot;price&quot;: 100, &amp;#13; &quot;quantity&quot;: 10 &amp;#13; } &amp;#13; }&lt;/pre&gt; &lt;br&gt;</td>
+        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td><br><pre lang="json">{&#13; "name": "item1" &#13; }</pre> <br></td>
+        <td><br><pre lang="json">{&#13; "item": {&#13; "id": 1, &#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; "quantity": 10 &#13; } &#13; }</pre> <br></td>
     </tr>
 </table>
 
