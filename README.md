@@ -62,16 +62,22 @@ the following are the resources in the inventory management system API
 
 <style>
 table th:first-of-type {
-    width: 10%;
+    width: 10%
 }
 table th:nth-of-type(2) {
-    width: 10%;
+    width: 10%
 }
 table th:nth-of-type(3) {
-    width: 50%;
+    width: 10%
 }
 table th:nth-of-type(4) {
-    width: 30%;
+    width: 10%
+}
+table th:nth-of-type(5) {
+    width: 10%
+}
+table th:nth-of-type(6) {
+    width: 50%
 }
 </style>
 
