@@ -68,25 +68,20 @@ the following are the resources in the inventory management system API
     border: 1px solid #ddd;
     margin-top: 20px;
 }
-
 .cus_table th, .cus_table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
-
 .cus_table th {
     background-color: #f2f2f2;
 }
-
 .cus_table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-
 .cus_table tr:hover {
     background-color: #f2f2f2;
 }
-
 .cus_table th {
     padding-top: 12px;
     padding-bottom: 12px;
