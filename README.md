@@ -35,6 +35,7 @@ This is a simple inventory management system REST API, that allow managing Items
   - [/customers](#customers)
   - [/orders](#orders)
   - [/supplies](#supplies)
+- [OpenAPI Documentation](#openapi-documentation)
 - [📦 Installation](#-installation)
 
 
