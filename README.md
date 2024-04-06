@@ -60,6 +60,21 @@ the following are the resources in the inventory management system API
 
 `Base URL : example.com/api/v1`
 
+<style>
+table th:first-of-type {
+    width: 10%;
+}
+table th:nth-of-type(2) {
+    width: 10%;
+}
+table th:nth-of-type(3) {
+    width: 50%;
+}
+table th:nth-of-type(4) {
+    width: 30%;
+}
+</style>
+
 ### /items
 
 | HTTP Request | Operation | Description | HTTP Status Code | Request Body Sample | Response Body Sample |
