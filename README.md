@@ -1,8 +1,11 @@
 # inventory-management-system
 
+This is a simple inventory management system REST API, it allow managing Items, Customers, Orders, Suppliers, and supplies.
+
+> The API still under development and the documentation is not complete yet.
+
+
 ## 📝 Table of Contents
-- [📝 Table of Contents](#-table-of-contents)
-- [ℹ Description](#ℹ-description)
 - [🧰 Resources](#-resources)
 - [✏ ERD's and Diagrams](#-erds-and-diagrams)
 - [📋 API Endpoints and Documentation](#-api-endpoints-and-documentation)
@@ -11,11 +14,6 @@
   - [/customers](#customers)
   - [/orders](#orders)
   - [/supplies](#supplies)
-
-
-
-## ℹ Description
-This is a simple inventory management system REST API, it allow managing Items, Customers, Orders, Suppliers, and supplies, it is still under development.
 
 ## 🧰 Resources
 the following are the resources in the inventory management system API
@@ -100,3 +98,8 @@ the following are the resources in the inventory management system API
 | PUT /supplies/{id} | Update | Update supply by id | 200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error) | <br><pre lang="json">{&#13; "item_id": 1, &#13; "supplier_id": 1, &#13; "quantity": 10, &#13; "price_per_unit": 100, &#13; "date": "2021-10-10" &#13; }</pre> <br> | <br><pre lang="json">{&#13; "supply": {&#13; "id": 1, &#13; "item_id": 1, &#13; "supplier_id": 1, &#13; "quantity": 10, &#13; "price_per_unit": 100, &#13; "date": "2021-10-10" &#13; } &#13; }</pre> <br> |
 | DELETE /supplies/{id} | Delete | Delete supply by id | 204 (No Content) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 500(Internal Server Error) | N/A | N/A |
 | PATCH /supplies/{id} | Partial Update | Partial Update supply by id | 200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found), 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error) | <br><pre lang="json">{&#13; "quantity": 10 &#13; }</pre> <br> | <br><pre lang="json">{&#13; "supply": {&#13; "id": 1, &#13; "item_id": 1, &#13; "supplier_id": 1, &#13; "quantity": 10, &#13; "price_per_unit": 100, &#13; "date": "2021-10-10" &#13; } &#13; }</pre> <br> |
+
+
+## OpenAPI Documentation
+- The OpenAPI v3.1.0 is available in the following link [SwaggerHub]()
+
