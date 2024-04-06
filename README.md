@@ -86,7 +86,11 @@ the following are the resources in the inventory management system API
 </thead>
 <tbody>
 <tr>
-<td> `GET /items` </td>
+<td> 
+
+`GET /items` 
+
+</td>
 <td>Read</td>
 <td>Get all items</td>
 <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
