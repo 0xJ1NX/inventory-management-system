@@ -1,6 +1,8 @@
 # inventory-management-system
 
-<img src="./images/inv-manage-sys.png" alt="Inventory Management System logo" width="300" >
+<p align="center">
+  <img src="./images/inv-manage-sys.png" alt="Inventory Management System logo" width="300" >
+</p>
 
 This is a simple inventory management system REST API, it allow managing Items, Customers, Orders, Suppliers, and supplies.
 
