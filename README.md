@@ -94,7 +94,6 @@ the following are the resources in the inventory management system API
     background-color: #04AA6D;
     color: white;
 }
-
 </style>
 
 
