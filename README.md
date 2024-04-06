@@ -64,7 +64,7 @@ the following are the resources in the inventory management system API
 
 
 
-| HTTP Request | Operation | Description | <div width="100"> HTTP Status Code </div> | Request Body Sample | Response Body Sample |
+| HTTP Request | Operation | Description | <div width="300"> HTTP Status Code </div> | Request Body Sample | Response Body Sample |
 | ------------ | --------- | ----------- | ---------------- | -------------- | --------------- |
 | `GET /items`    | Read | Get all items | 200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error) | N/A | <br><pre lang="json">{&#13; "items": [&#13; {&#13; "id": 1, &#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; "quantity": 10 &#13; }, &#13; {&#13; "id": 2, &#13; "name": "item2", &#13; "description": "item2 description", &#13; "price": 200, &#13; "quantity": 20 &#13; } &#13; ] &#13; }</pre> <br> |
 | `GET /items/{id}` | Read | Get item by id | 200 (OK) <br> 401 (Unauthorized)<br> 403 (Forbidden)<br> 404 (Not Found)<br> 429(Too Many Requests)<br> 500(Internal Server Error) | N/A | <br><pre lang="json">{&#13; "item": {&#13; "id": 1, &#13; "name": "item1", &#13; "description": "item1 description", &#13; "price": 100, &#13; "quantity": 10 &#13; } &#13; }</pre> <br> |
