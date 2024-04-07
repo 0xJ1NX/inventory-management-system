@@ -13,7 +13,7 @@ This is a simple inventory management system REST API, that allow managing Items
     <a href="https://github.com/0xJ1NX">
         <img src="https://img.shields.io/badge/Author-0xJ1NX-blue?style=for-the-badge"  height="27"  alt=""/>
     </a>
-    <a href="">
+    <a href="https://app.swaggerhub.com/apis/1201062/Inventory-management-system/1.0.0#/">
         <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white"  alt=""/>
     </a>
     <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"  alt=""/>
