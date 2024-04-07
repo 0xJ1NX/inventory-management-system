@@ -322,7 +322,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get all suppliers</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -354,7 +354,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get supplier by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized)<br> 403 (Forbidden)<br> 404 (Not Found)<br> 429(Too Many Requests)<br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized)<br> 403 (Forbidden)<br> 404 (Not Found)<br> 429(Too Many Requests)<br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -378,7 +378,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get all supplies of a supplier</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -414,7 +414,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get the item of a supplier</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -439,7 +439,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Create</td>
         <td>Create new supplier</td>
-        <td>201 (Created) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>201 (Created) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
 
 ```json
@@ -473,7 +473,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Create</td>
         <td>Create new supply for a supplier</td>
-        <td>201 (Created) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429 (Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500 (Internal Server Error)</td>
+        <td>201 (Created) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429 (Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500 (Internal Server Error)</td>
 <td>
 
 ```json
@@ -514,7 +514,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Update</td>
         <td>Update supplier by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
     
 ```json
@@ -547,7 +547,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Delete</td>
         <td>Delete supplier by id</td>
-        <td>204 (No Content) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 410 (Gone) <br> 500(Internal Server Error)</td>
+        <td>204 (No Content) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 410 (Gone) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
         <td>N/A</td>
     </tr>
@@ -558,7 +558,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Partial Update</td>
         <td>Partial Update supplier by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
     
 
@@ -615,7 +615,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get all customers</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -647,7 +647,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get customer by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized)<br> 403 (Forbidden)<br> 404 (Not Found)<br> 429(Too Many Requests)<br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized)<br> 403 (Forbidden)<br> 404 (Not Found)<br> 429(Too Many Requests)<br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -671,7 +671,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get all orders of a customer</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -705,7 +705,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Create</td>
         <td>Create new customer</td>
-        <td>201 (Created) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>201 (Created) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
 
 ```json
@@ -739,7 +739,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Create</td>
         <td>Create new order for a customer</td>
-        <td>201 (Created) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500 (Internal Server Error)</td>
+        <td>201 (Created) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500 (Internal Server Error)</td>
 <td>
 
 ```json
@@ -774,7 +774,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Update</td>
         <td>Update customer by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
 
 ```json
@@ -809,7 +809,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Delete</td>
         <td>Delete customer by id</td>
-        <td>204 (No Content) <br> 401 (Unauthorized) <br> (Forbidden) <br> (Not Found) <br> (Too Many Requests) <br> 410 (Gone) <br> 500(Internal Server Error)</td>
+        <td>204 (No Content) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> (Forbidden) <br> (Not Found) <br> (Too Many Requests) <br> 410 (Gone) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
         <td>N/A</td>
     </tr>
@@ -822,7 +822,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Partial Update</td>
         <td>Partial Update customer by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
 
 ```json
@@ -879,7 +879,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get all orders</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -913,7 +913,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get order by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized)<br> 403 (Forbidden)<br> 404 (Not Found)<br> 429(Too Many Requests)<br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized)<br> 403 (Forbidden)<br> 404 (Not Found)<br> 429(Too Many Requests)<br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -974,7 +974,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Create</td>
         <td>Create new order</td>
-        <td>201 (Created) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>201 (Created) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
     
 ```json
@@ -1009,7 +1009,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Update</td>
         <td>Update order by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
 
 ```json
@@ -1045,7 +1045,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Delete</td>
         <td>Delete order by id</td>
-        <td>204 (No Content) <br> 401 (Unauthorized) <br> (Forbidden) <br> (Not Found) <br> (Too Many Requests) <br> 410 (Gone) <br> 500(Internal Server Error)</td>
+        <td>204 (No Content) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> (Forbidden) <br> (Not Found) <br> (Too Many Requests) <br> 410 (Gone) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
         <td>N/A</td>
     </tr>
@@ -1056,7 +1056,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Partial Update</td>
         <td>Partial Update order by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
 
 ```json
@@ -1115,7 +1115,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get all supplies</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -1151,7 +1151,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get supply by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized)<br> 403 (Forbidden)<br> 404 (Not Found)<br> 429(Too Many Requests)<br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized)<br> 403 (Forbidden)<br> 404 (Not Found)<br> 429(Too Many Requests)<br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -1178,7 +1178,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Create</td>
         <td>Create new supply</td>
-        <td>201 (Created) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>201 (Created) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
 
 ```json
@@ -1215,7 +1215,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Update</td>
         <td>Update supply by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
 
 ```json
@@ -1253,7 +1253,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Delete</td>
         <td>Delete supply by id</td>
-        <td>204 (No Content) <br> 401 (Unauthorized) <br> (Forbidden) <br> (Not Found) <br> (Too Many Requests) <br> 410 (Gone) <br> 500(Internal Server Error)</td>
+        <td>204 (No Content) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> (Forbidden) <br> (Not Found) <br> (Too Many Requests) <br> 410 (Gone) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
         <td>N/A</td>
     </tr>
@@ -1264,7 +1264,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Partial Update</td>
         <td>Partial Update supply by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found), 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found), 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
 
 ```json
