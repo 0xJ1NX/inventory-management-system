@@ -1304,6 +1304,5 @@ the following are the resources in the inventory management system API
 - The OpenAPI v3.1.0 is available in the following link [SwaggerHub](https://app.swaggerhub.com/apis/1201062/Inventory-management-system/1.0.0#/)
 
 
-## 📦 Installation
->[!NOTE]
+## 📦 Installation & Running
 > comming soon
