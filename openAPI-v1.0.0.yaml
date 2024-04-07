@@ -1,3 +1,4 @@
+---
 openapi: 3.1.0
 info:
   title: Inventory Management System - OpenAPI 3.1
@@ -31,7 +32,7 @@ paths:
       description: return all items in the inventory in json object
       operationId: getItems
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -41,8 +42,28 @@ paths:
                   items:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Item'
-        '400':
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: number
+                          format: double
+                        quantity:
+                          type: integer
+                          format: int32
+                      required:
+                        - id
+                        - name
+                        - description
+                        - price
+                        - quantity
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -51,13 +72,13 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     post:
       tags:
@@ -70,9 +91,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Item-creation'
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                  format: double
+              required:
+                - name
+                - description
+                - price
       responses:
-        '201':
+        "201":
           description: Item created
           content:
             application/json:
@@ -80,8 +113,28 @@ paths:
                 type: object
                 properties:
                   item:
-                    $ref: '#/components/schemas/Item'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      price:
+                        type: number
+                        format: double
+                      quantity:
+                        type: integer
+                        format: int32
+                    required:
+                      - id
+                      - name
+                      - description
+                      - price
+                      - quantity
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -90,15 +143,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /items/{id}:
     get:
@@ -116,7 +169,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -124,8 +177,28 @@ paths:
                 type: object
                 properties:
                   item:
-                    $ref: '#/components/schemas/Item'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      price:
+                        type: number
+                        format: double
+                      quantity:
+                        type: integer
+                        format: int32
+                    required:
+                      - id
+                      - name
+                      - description
+                      - price
+                      - quantity
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -134,15 +207,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Item not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     put:
       tags:
@@ -163,9 +236,29 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Item'
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: int64
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                  format: double
+                quantity:
+                  type: integer
+                  format: int32
+              required:
+                - id
+                - name
+                - description
+                - price
+                - quantity
       responses:
-        '200':
+        "200":
           description: Item updated
           content:
             application/json:
@@ -173,8 +266,28 @@ paths:
                 type: object
                 properties:
                   item:
-                    $ref: '#/components/schemas/Item'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      price:
+                        type: number
+                        format: double
+                      quantity:
+                        type: integer
+                        format: int32
+                    required:
+                      - id
+                      - name
+                      - description
+                      - price
+                      - quantity
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -183,17 +296,17 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Item not found
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     delete:
       tags:
@@ -210,9 +323,9 @@ paths:
             type: integer
             format: int64
       responses:
-        '204':
+        "204":
           description: Item deleted
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -221,15 +334,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Item not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     patch:
       tags:
@@ -260,7 +373,7 @@ paths:
                   type: number
                   format: double
       responses:
-        '200':
+        "200":
           description: Item updated
           content:
             application/json:
@@ -268,8 +381,28 @@ paths:
                 type: object
                 properties:
                   item:
-                    $ref: '#/components/schemas/Item'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      price:
+                        type: number
+                        format: double
+                      quantity:
+                        type: integer
+                        format: int32
+                    required:
+                      - id
+                      - name
+                      - description
+                      - price
+                      - quantity
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -278,17 +411,17 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Item not found
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /items/{id}/suppliers:
     get:
@@ -306,7 +439,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -316,8 +449,23 @@ paths:
                   suppliers:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Supplier'
-        '400':
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name:
+                          type: string
+                        email:
+                          type: string
+                        phone:
+                          type: string
+                      required:
+                        - id
+                        - name
+                        - email
+                        - phone
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -326,15 +474,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Item not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /suppliers:
     get:
@@ -344,7 +492,7 @@ paths:
       description: return all suppliers in json object
       operationId: getSuppliers
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -354,8 +502,23 @@ paths:
                   suppliers:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Supplier'
-        '400':
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name:
+                          type: string
+                        email:
+                          type: string
+                        phone:
+                          type: string
+                      required:
+                        - id
+                        - name
+                        - email
+                        - phone
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -364,13 +527,13 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     post:
       tags:
@@ -383,9 +546,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Supplier-creation'
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+              required:
+                - name
+                - email
+                - phone
       responses:
-        '201':
+        "201":
           description: Supplier created
           content:
             application/json:
@@ -393,8 +567,23 @@ paths:
                 type: object
                 properties:
                   supplier:
-                    $ref: '#/components/schemas/Supplier'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -403,15 +592,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /suppliers/{id}:
     get:
@@ -429,7 +618,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -437,8 +626,23 @@ paths:
                 type: object
                 properties:
                   supplier:
-                    $ref: '#/components/schemas/Supplier'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -447,15 +651,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Supplier not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     put:
       tags:
@@ -476,9 +680,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Supplier-creation'
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+              required:
+                - name
+                - email
+                - phone
       responses:
-        '200':
+        "200":
           description: Supplier updated
           content:
             application/json:
@@ -486,8 +701,23 @@ paths:
                 type: object
                 properties:
                   supplier:
-                    $ref: '#/components/schemas/Supplier'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -496,17 +726,17 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Supplier not found
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     delete:
       tags:
@@ -523,9 +753,9 @@ paths:
             type: integer
             format: int64
       responses:
-        '204':
+        "204":
           description: Supplier deleted
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -534,15 +764,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Supplier not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     patch:
       tags:
@@ -572,7 +802,7 @@ paths:
                 phone:
                   type: string
       responses:
-        '200':
+        "200":
           description: Supplier updated
           content:
             application/json:
@@ -580,8 +810,23 @@ paths:
                 type: object
                 properties:
                   supplier:
-                    $ref: '#/components/schemas/Supplier'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -590,17 +835,17 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Supplier not found
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /suppliers/{id}/item:
     get:
@@ -618,7 +863,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -628,8 +873,28 @@ paths:
                   items:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Item'
-        '400':
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: number
+                          format: double
+                        quantity:
+                          type: integer
+                          format: int32
+                      required:
+                        - id
+                        - name
+                        - description
+                        - price
+                        - quantity
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -638,15 +903,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Supplier not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /suppliers/{id}/supply:
     get:
@@ -664,7 +929,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -674,8 +939,30 @@ paths:
                   supplies:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Supply'
-        '400':
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        item_id:
+                          type: integer
+                          format: int64
+                        supplier_id:
+                          type: integer
+                          format: int64
+                        quantity:
+                          type: integer
+                          format: int32
+                        price_per_unit:
+                          type: number
+                          format: double
+                      required:
+                        - id
+                        - item_id
+                        - supplier_id
+                        - quantity
+                        - price_per_unit
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -684,15 +971,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Supplier not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     post:
       tags:
@@ -705,9 +992,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Supply-creation'
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                supplier_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+                price_per_unit:
+                  type: number
+                  format: double
+              required:
+                - item_id
+                - supplier_id
+                - quantity
+                - price_per_unit
       responses:
-        '201':
+        "201":
           description: Supply created
           content:
             application/json:
@@ -715,8 +1020,30 @@ paths:
                 type: object
                 properties:
                   supply:
-                    $ref: '#/components/schemas/Supply'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      supplier_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      price_per_unit:
+                        type: number
+                        format: double
+                    required:
+                      - id
+                      - item_id
+                      - supplier_id
+                      - quantity
+                      - price_per_unit
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -725,15 +1052,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /customers:
     get:
@@ -743,7 +1070,7 @@ paths:
       description: return all customers in json object
       operationId: getCustomers
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -753,8 +1080,23 @@ paths:
                   customers:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Customer'
-        '400':
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name:
+                          type: string
+                        email:
+                          type: string
+                        phone:
+                          type: string
+                      required:
+                        - id
+                        - name
+                        - email
+                        - phone
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -763,13 +1105,13 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     post:
       tags:
@@ -782,9 +1124,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Customer-creation'
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+              required:
+                - name
+                - email
+                - phone
       responses:
-        '201':
+        "201":
           description: Customer created
           content:
             application/json:
@@ -792,8 +1145,23 @@ paths:
                 type: object
                 properties:
                   customer:
-                    $ref: '#/components/schemas/Customer'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -802,15 +1170,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /customers/{id}:
     get:
@@ -828,7 +1196,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -836,8 +1204,23 @@ paths:
                 type: object
                 properties:
                   customer:
-                    $ref: '#/components/schemas/Customer'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -846,15 +1229,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Customer not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     put:
       tags:
@@ -875,9 +1258,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Customer-creation'
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+              required:
+                - name
+                - email
+                - phone
       responses:
-        '200':
+        "200":
           description: Customer updated
           content:
             application/json:
@@ -885,8 +1279,23 @@ paths:
                 type: object
                 properties:
                   customer:
-                    $ref: '#/components/schemas/Customer'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -895,17 +1304,17 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Customer not found
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     delete:
       tags:
@@ -922,9 +1331,9 @@ paths:
             type: integer
             format: int64
       responses:
-        '204':
+        "204":
           description: Customer deleted
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -933,15 +1342,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Customer not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     patch:
       tags:
@@ -971,7 +1380,7 @@ paths:
                 phone:
                   type: string
       responses:
-        '200':
+        "200":
           description: Customer updated
           content:
             application/json:
@@ -979,27 +1388,42 @@ paths:
                 type: object
                 properties:
                   customer:
-                    $ref: '#/components/schemas/Customer'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
           description: Bad Request
           content:
             application/json:
               schema:
                 type: object
-                properties:
+                properties: ""
                 message:
                   type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Customer not found
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /customers/{id}/order:
     get:
@@ -1017,7 +1441,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -1027,8 +1451,30 @@ paths:
                   orders:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Order'
-        '400':
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        item_id:
+                          type: integer
+                          format: int64
+                        customer_id:
+                          type: integer
+                          format: int64
+                        quantity:
+                          type: integer
+                          format: int32
+                        date:
+                          type: string
+                          format: date
+                      required:
+                        - id
+                        - item_id
+                        - customer_id
+                        - quantity
+                        - date
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1037,15 +1483,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Customer not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     post:
       tags:
@@ -1058,9 +1504,23 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Order-creation'
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                customer_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+              required:
+                - item_id
+                - customer_id
+                - quantity
       responses:
-        '201':
+        "201":
           description: Order created
           content:
             application/json:
@@ -1068,8 +1528,30 @@ paths:
                 type: object
                 properties:
                   order:
-                    $ref: '#/components/schemas/Order'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      customer_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      date:
+                        type: string
+                        format: date
+                    required:
+                      - id
+                      - item_id
+                      - customer_id
+                      - quantity
+                      - date
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1078,15 +1560,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /orders:
     get:
@@ -1096,7 +1578,7 @@ paths:
       description: return all orders in json object
       operationId: getOrders
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -1106,8 +1588,30 @@ paths:
                   orders:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Order'
-        '400':
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        item_id:
+                          type: integer
+                          format: int64
+                        customer_id:
+                          type: integer
+                          format: int64
+                        quantity:
+                          type: integer
+                          format: int32
+                        date:
+                          type: string
+                          format: date
+                      required:
+                        - id
+                        - item_id
+                        - customer_id
+                        - quantity
+                        - date
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1116,13 +1620,13 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     post:
       tags:
@@ -1135,9 +1639,23 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Order-creation'
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                customer_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+              required:
+                - item_id
+                - customer_id
+                - quantity
       responses:
-        '201':
+        "201":
           description: Order created
           content:
             application/json:
@@ -1145,8 +1663,30 @@ paths:
                 type: object
                 properties:
                   order:
-                    $ref: '#/components/schemas/Order'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      customer_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      date:
+                        type: string
+                        format: date
+                    required:
+                      - id
+                      - item_id
+                      - customer_id
+                      - quantity
+                      - date
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1155,17 +1695,16 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
-
   /orders/{id}:
     get:
       tags:
@@ -1182,7 +1721,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -1190,8 +1729,30 @@ paths:
                 type: object
                 properties:
                   order:
-                    $ref: '#/components/schemas/Order'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      customer_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      date:
+                        type: string
+                        format: date
+                    required:
+                      - id
+                      - item_id
+                      - customer_id
+                      - quantity
+                      - date
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1200,15 +1761,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Order not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     put:
       tags:
@@ -1229,9 +1790,23 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Order-creation'
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                customer_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+              required:
+                - item_id
+                - customer_id
+                - quantity
       responses:
-        '200':
+        "200":
           description: Order updated
           content:
             application/json:
@@ -1239,8 +1814,30 @@ paths:
                 type: object
                 properties:
                   order:
-                    $ref: '#/components/schemas/Order'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      customer_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      date:
+                        type: string
+                        format: date
+                    required:
+                      - id
+                      - item_id
+                      - customer_id
+                      - quantity
+                      - date
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1249,17 +1846,17 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Order not found
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     delete:
       tags:
@@ -1276,9 +1873,9 @@ paths:
             type: integer
             format: int64
       responses:
-        '204':
+        "204":
           description: Order deleted
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1287,17 +1884,16 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Order not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
-
     patch:
       tags:
         - orders
@@ -1329,7 +1925,7 @@ paths:
                   type: integer
                   format: int32
       responses:
-        '200':
+        "200":
           description: Order updated
           content:
             application/json:
@@ -1337,27 +1933,49 @@ paths:
                 type: object
                 properties:
                   order:
-                    $ref: '#/components/schemas/Order'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      customer_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      date:
+                        type: string
+                        format: date
+                    required:
+                      - id
+                      - item_id
+                      - customer_id
+                      - quantity
+                      - date
+        "400":
           description: Bad Request
           content:
             application/json:
               schema:
                 type: object
-                properties:
+                properties: ""
                 message:
                   type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Order not found
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /orders/{id}/item:
     get:
@@ -1375,7 +1993,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -1385,8 +2003,28 @@ paths:
                   items:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Item'
-        '400':
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: number
+                          format: double
+                        quantity:
+                          type: integer
+                          format: int32
+                      required:
+                        - id
+                        - name
+                        - description
+                        - price
+                        - quantity
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1395,15 +2033,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Order not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /supplies:
     get:
@@ -1413,7 +2051,7 @@ paths:
       description: return all supplies in json object
       operationId: getSupplies
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -1423,8 +2061,30 @@ paths:
                   supplies:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Supply'
-        '400':
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        item_id:
+                          type: integer
+                          format: int64
+                        supplier_id:
+                          type: integer
+                          format: int64
+                        quantity:
+                          type: integer
+                          format: int32
+                        price_per_unit:
+                          type: number
+                          format: double
+                      required:
+                        - id
+                        - item_id
+                        - supplier_id
+                        - quantity
+                        - price_per_unit
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1433,13 +2093,13 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     post:
       tags:
@@ -1452,9 +2112,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Supply-creation'
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                supplier_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+                price_per_unit:
+                  type: number
+                  format: double
+              required:
+                - item_id
+                - supplier_id
+                - quantity
+                - price_per_unit
       responses:
-        '201':
+        "201":
           description: Supply created
           content:
             application/json:
@@ -1462,8 +2140,30 @@ paths:
                 type: object
                 properties:
                   supply:
-                    $ref: '#/components/schemas/Supply'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      supplier_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      price_per_unit:
+                        type: number
+                        format: double
+                    required:
+                      - id
+                      - item_id
+                      - supplier_id
+                      - quantity
+                      - price_per_unit
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1472,15 +2172,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
   /supplies/{id}:
     get:
@@ -1498,7 +2198,7 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Successful Operation
           content:
             application/json:
@@ -1506,8 +2206,30 @@ paths:
                 type: object
                 properties:
                   supply:
-                    $ref: '#/components/schemas/Supply'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      supplier_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      price_per_unit:
+                        type: number
+                        format: double
+                    required:
+                      - id
+                      - item_id
+                      - supplier_id
+                      - quantity
+                      - price_per_unit
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1516,15 +2238,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Supply not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     put:
       tags:
@@ -1545,9 +2267,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Supply-creation'
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                supplier_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+                price_per_unit:
+                  type: number
+                  format: double
+              required:
+                - item_id
+                - supplier_id
+                - quantity
+                - price_per_unit
       responses:
-        '200':
+        "200":
           description: Supply updated
           content:
             application/json:
@@ -1555,8 +2295,30 @@ paths:
                 type: object
                 properties:
                   supply:
-                    $ref: '#/components/schemas/Supply'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      supplier_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      price_per_unit:
+                        type: number
+                        format: double
+                    required:
+                      - id
+                      - item_id
+                      - supplier_id
+                      - quantity
+                      - price_per_unit
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1565,17 +2327,17 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Supply not found
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     delete:
       tags:
@@ -1592,9 +2354,9 @@ paths:
             type: integer
             format: int64
       responses:
-        '204':
+        "204":
           description: Supply deleted
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1603,15 +2365,15 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Supply not found
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
     patch:
       tags:
@@ -1647,7 +2409,7 @@ paths:
                   type: number
                   format: double
       responses:
-        '200':
+        "200":
           description: Supply updated
           content:
             application/json:
@@ -1655,8 +2417,30 @@ paths:
                 type: object
                 properties:
                   supply:
-                    $ref: '#/components/schemas/Supply'
-        '400':
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      supplier_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      price_per_unit:
+                        type: number
+                        format: double
+                    required:
+                      - id
+                      - item_id
+                      - supplier_id
+                      - quantity
+                      - price_per_unit
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1665,19 +2449,18 @@ paths:
                 properties:
                   message:
                     type: string
-        '401':
+        "401":
           description: Unauthorized Access
-        '403':
+        "403":
           description: Forbidden Access
-        '404':
+        "404":
           description: Supply not found
-        '415':
+        "415":
           description: Unsupported Media Type
-        '429':
+        "429":
           description: Too many requests
-        '500':
+        "500":
           description: Internal Server Error
-
 components:
   schemas:
     Item:
