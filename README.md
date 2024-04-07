@@ -11,18 +11,18 @@ This is a simple inventory management system REST API, that allow managing Items
 
 <p align="center">
     <a href="https://github.com/0xJ1NX">
-        <img src="https://img.shields.io/badge/Author-0xJ1NX-blue?style=for-the-badge"  height="27" />
+        <img src="https://img.shields.io/badge/Author-0xJ1NX-blue?style=for-the-badge"  height="27"  alt=""/>
     </a>
     <a href="">
-        <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white" />
+        <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white"  alt=""/>
     </a>
-    <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" />
-    <img src="https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot" />
+    <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"  alt=""/>
+    <img src="https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot"  alt=""/>
 </p>
 <br>
 <p align="center">
     <a href="https://www.buymeacoffee.com/om4r">
-        <img src="https://img.shields.io/badge/Buy%20me%20a%20coffee-donate-yellow?style=for-the-badge&logo=buy-me-a-coffee" />
+        <img src="https://img.shields.io/badge/Buy%20me%20a%20coffee-donate-yellow?style=for-the-badge&logo=buy-me-a-coffee"  alt=""/>
     </a>
 </p>
 
@@ -92,7 +92,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get all items</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -128,7 +128,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get item by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized)<br> 403 (Forbidden)<br> 404 (Not Found)<br> 429(Too Many Requests)<br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized)<br> 403 (Forbidden)<br> 404 (Not Found)<br> 429(Too Many Requests)<br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
     
@@ -153,7 +153,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Read</td>
         <td>Get all suppliers of an item</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Item Not Found) <br> 429 (Too Many Requests) <br> 500 (Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
@@ -185,14 +185,14 @@ the following are the resources in the inventory management system API
 </td>
         <td>Create</td>
         <td>Create new item the quantity initiale zero</td>
-        <td>201 (Created) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>201 (Created) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
 
 ```json
 {
     "name": "item1",
     "description": "item1 description",
-    "price": 100,
+    "price": 100
 }
 ```
 </td>
@@ -219,14 +219,14 @@ the following are the resources in the inventory management system API
 </td>
         <td>Update</td>
         <td>Update item by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
 
 ```json
 {
     "name": "item1",
     "description": "item1 description",
-    "price": 100,
+    "price": 100
 }
 ```
 </td>
@@ -252,7 +252,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Delete</td>
         <td>Delete item by id</td>
-        <td>204 (No Content) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 410 (Gone) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
+        <td>204 (No Content) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 410 (Gone) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
         <td>N/A</td>
     </tr>
@@ -264,7 +264,7 @@ the following are the resources in the inventory management system API
 </td>
         <td>Partial Update</td>
         <td>Partial Update item by id</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
+        <td>200 (OK) <br> 400 (Bad Request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 415 (Unsupported Media Type) <br> 500(Internal Server Error)</td>
 <td>
 
 ```json
@@ -543,7 +543,7 @@ the following are the resources in the inventory management system API
     <tr>
 <td>
 
-`DELETE /supplier/{id}`
+`DELETE /suppliers/{id}`
 </td>
         <td>Delete</td>
         <td>Delete supplier by id</td>
@@ -938,20 +938,29 @@ the following are the resources in the inventory management system API
 
 </td>
         <td>Read</td>
-        <td>Get the item of an order</td>
-        <td>200 (OK) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
+        <td>Get all items in an order</td>
+        <td>200 (OK) <br> 400 (Bad request) <br> 401 (Unauthorized) <br> 403 (Forbidden) <br> 404 (Not Found) <br> 429(Too Many Requests) <br> 500(Internal Server Error)</td>
         <td>N/A</td>
 <td>
 
 ```json
 {
-    "item": {
-        "id": 1,
-        "name": "item1",
-        "description": "item1 description",
-        "price": 100,
-        "quantity": 10
-    }
+    "items": [
+        {
+            "id": 1,
+            "name": "item1",
+            "description": "item1 description",
+            "price": 100,
+            "quantity": 10
+        },
+        {
+            "id": 2,
+            "name": "item2",
+            "description": "item2 description",
+            "price": 200,
+            "quantity": 20
+        }
+    ]
 }
 ```
 
@@ -1007,7 +1016,8 @@ the following are the resources in the inventory management system API
 {
     "item_id": 1,
     "customer_id": 1,
-    "quantity": 10
+    "quantity": 10,
+    "date": "2021-10-10"
 }
 ```
 
@@ -1176,8 +1186,7 @@ the following are the resources in the inventory management system API
     "item_id": 1,
     "supplier_id": 1,
     "quantity": 10,
-    "price_per_unit": 100,
-    "date": "2021-10-10"
+    "price_per_unit": 100
 }
 ```
 
@@ -1292,7 +1301,7 @@ the following are the resources in the inventory management system API
 </p>
 
 
-- The OpenAPI v3.1.0 is available in the following link [SwaggerHub]()
+- The OpenAPI v3.1.0 is available in the following link [SwaggerHub](https://app.swaggerhub.com/apis/1201062/Inventory-management-system/1.0.0#/)
 
 
 ## 📦 Installation
