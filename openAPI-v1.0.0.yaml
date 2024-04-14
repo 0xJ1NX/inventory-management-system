@@ -1,0 +1,2645 @@
+---
+openapi: 3.1.0
+info:
+  title: Inventory Management System - OpenAPI 3.1
+  description: |-
+    This is an Inventory Management System API documentation. It provides the endpoints for managing items, customers, orders, supplies, and suppliers.
+    Some useful links:
+    - [The github repository](https://github.com/0xJ1NX/inventory-management-system)
+  contact:
+    email: omarqalalweh@gmail.com
+  version: 1.0.0
+servers:
+  - url: https://localhost:8080/api/v1
+    description: Local server
+tags:
+  - name: items
+    description: Operations about items in the inventory
+  - name: suppliers
+    description: Operations about suppliers
+  - name: customers
+    description: Operations about customers
+  - name: orders
+    description: Operations about orders
+  - name: supplies
+    description: Operations about supplies
+paths:
+  /items:
+    get:
+      tags:
+        - items
+      summary: Get all items
+      description: return all items in the inventory in json object
+      operationId: getItems
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: number
+                          format: double
+                        quantity:
+                          type: integer
+                          format: int32
+                      required:
+                        - id
+                        - name
+                        - description
+                        - price
+                        - quantity
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    post:
+      tags:
+        - items
+      summary: Add a new item
+      description: Add a new item to the inventory
+      operationId: addItem
+      requestBody:
+        description: Item object that needs to be added to the inventory without the id and the quantity
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                  format: double
+              required:
+                - name
+                - description
+                - price
+      responses:
+        "201":
+          description: Item created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  item:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      price:
+                        type: number
+                        format: double
+                      quantity:
+                        type: integer
+                        format: int32
+                    required:
+                      - id
+                      - name
+                      - description
+                      - price
+                      - quantity
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /items/{id}:
+    get:
+      tags:
+        - items
+      summary: Get an item by id
+      description: Returns a single item in json object
+      operationId: getItemById
+      parameters:
+        - name: id
+          in: path
+          description: ID of the item to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  item:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      price:
+                        type: number
+                        format: double
+                      quantity:
+                        type: integer
+                        format: int32
+                    required:
+                      - id
+                      - name
+                      - description
+                      - price
+                      - quantity
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Item not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    put:
+      tags:
+        - items
+      summary: Update an item
+      description: Update an item in the inventory
+      operationId: updateItem
+      parameters:
+        - name: id
+          in: path
+          description: ID of the item to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Item object that needs to be updated in the inventory
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: int64
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                  format: double
+                quantity:
+                  type: integer
+                  format: int32
+              required:
+                - id
+                - name
+                - description
+                - price
+                - quantity
+      responses:
+        "200":
+          description: Item updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  item:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      price:
+                        type: number
+                        format: double
+                      quantity:
+                        type: integer
+                        format: int32
+                    required:
+                      - id
+                      - name
+                      - description
+                      - price
+                      - quantity
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Item not found
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    delete:
+      tags:
+        - items
+      summary: Delete an item
+      description: Delete an item from the inventory
+      operationId: deleteItem
+      parameters:
+        - name: id
+          in: path
+          description: ID of the item to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: Item deleted
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Item not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    patch:
+      tags:
+        - items
+      summary: Update an item
+      description: Update an item in the inventory
+      operationId: partialUpdateItem
+      parameters:
+        - name: id
+          in: path
+          description: ID of the item to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Item object that needs to be updated in the inventory
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                  format: double
+      responses:
+        "200":
+          description: Item updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  item:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      price:
+                        type: number
+                        format: double
+                      quantity:
+                        type: integer
+                        format: int32
+                    required:
+                      - id
+                      - name
+                      - description
+                      - price
+                      - quantity
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Item not found
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /items/{id}/suppliers:
+    get:
+      tags:
+        - items
+      summary: Get all suppliers of an item
+      description: return all suppliers of an item in json object
+      operationId: getSuppliersOfItem
+      parameters:
+        - name: id
+          in: path
+          description: ID of the item to return its suppliers
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  suppliers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name:
+                          type: string
+                        email:
+                          type: string
+                        phone:
+                          type: string
+                      required:
+                        - id
+                        - name
+                        - email
+                        - phone
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Item not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /suppliers:
+    get:
+      tags:
+        - suppliers
+      summary: Get all suppliers
+      description: return all suppliers in json object
+      operationId: getSuppliers
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  suppliers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name:
+                          type: string
+                        email:
+                          type: string
+                        phone:
+                          type: string
+                      required:
+                        - id
+                        - name
+                        - email
+                        - phone
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    post:
+      tags:
+        - suppliers
+      summary: Add a new supplier
+      description: Add a new supplier to the inventory
+      operationId: addSupplier
+      requestBody:
+        description: Supplier object that needs to be added to the inventory without the id
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+              required:
+                - name
+                - email
+                - phone
+      responses:
+        "201":
+          description: Supplier created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  supplier:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /suppliers/{id}:
+    get:
+      tags:
+        - suppliers
+      summary: Get a supplier by id
+      description: Returns a single supplier in json object
+      operationId: getSupplierById
+      parameters:
+        - name: id
+          in: path
+          description: ID of the supplier to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  supplier:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Supplier not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    put:
+      tags:
+        - suppliers
+      summary: Update a supplier
+      description: Update a supplier in the inventory
+      operationId: updateSupplier
+      parameters:
+        - name: id
+          in: path
+          description: ID of the supplier to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Supplier object that needs to be updated in the inventory
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+              required:
+                - name
+                - email
+                - phone
+      responses:
+        "200":
+          description: Supplier updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  supplier:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Supplier not found
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    delete:
+      tags:
+        - suppliers
+      summary: Delete a supplier
+      description: Delete a supplier from the inventory
+      operationId: deleteSupplier
+      parameters:
+        - name: id
+          in: path
+          description: ID of the supplier to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: Supplier deleted
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Supplier not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    patch:
+      tags:
+        - suppliers
+      summary: Update a supplier
+      description: Update a supplier in the inventory
+      operationId: partialUpdateSupplier
+      parameters:
+        - name: id
+          in: path
+          description: ID of the supplier to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Supplier object that needs to be updated in the inventory
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+      responses:
+        "200":
+          description: Supplier updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  supplier:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Supplier not found
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /suppliers/{id}/item:
+    get:
+      tags:
+        - suppliers
+      summary: Get all items of a supplier
+      description: return all items of a supplier in json object
+      operationId: getItemsOfSupplier
+      parameters:
+        - name: id
+          in: path
+          description: ID of the supplier to return its items
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: number
+                          format: double
+                        quantity:
+                          type: integer
+                          format: int32
+                      required:
+                        - id
+                        - name
+                        - description
+                        - price
+                        - quantity
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Supplier not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /suppliers/{id}/supply:
+    get:
+      tags:
+        - suppliers
+      summary: Get all supplies of a supplier
+      description: return all supplies of a supplier in json object
+      operationId: getSuppliesOfSupplier
+      parameters:
+        - name: id
+          in: path
+          description: ID of the supplier to return its supplies
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  supplies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        item_id:
+                          type: integer
+                          format: int64
+                        supplier_id:
+                          type: integer
+                          format: int64
+                        quantity:
+                          type: integer
+                          format: int32
+                        price_per_unit:
+                          type: number
+                          format: double
+                      required:
+                        - id
+                        - item_id
+                        - supplier_id
+                        - quantity
+                        - price_per_unit
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Supplier not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    post:
+      tags:
+        - suppliers
+      summary: Add a new supply for a supplier
+      description: Add a new supply to the inventory
+      operationId: addSupplyForSupplier
+      requestBody:
+        description: Supply object that needs to be added to the inventory without the id
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                supplier_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+                price_per_unit:
+                  type: number
+                  format: double
+              required:
+                - item_id
+                - supplier_id
+                - quantity
+                - price_per_unit
+      responses:
+        "201":
+          description: Supply created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  supply:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      supplier_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      price_per_unit:
+                        type: number
+                        format: double
+                    required:
+                      - id
+                      - item_id
+                      - supplier_id
+                      - quantity
+                      - price_per_unit
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /customers:
+    get:
+      tags:
+        - customers
+      summary: Get all customers
+      description: return all customers in json object
+      operationId: getCustomers
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name:
+                          type: string
+                        email:
+                          type: string
+                        phone:
+                          type: string
+                      required:
+                        - id
+                        - name
+                        - email
+                        - phone
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    post:
+      tags:
+        - customers
+      summary: Add a new customer
+      description: Add a new customer to the inventory
+      operationId: addCustomer
+      requestBody:
+        description: Customer object that needs to be added to the inventory without the id
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+              required:
+                - name
+                - email
+                - phone
+      responses:
+        "201":
+          description: Customer created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customer:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /customers/{id}:
+    get:
+      tags:
+        - customers
+      summary: Get a customer by id
+      description: Returns a single customer in json object
+      operationId: getCustomerById
+      parameters:
+        - name: id
+          in: path
+          description: ID of the customer to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customer:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Customer not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    put:
+      tags:
+        - customers
+      summary: Update a customer
+      description: Update a customer in the inventory
+      operationId: updateCustomer
+      parameters:
+        - name: id
+          in: path
+          description: ID of the customer to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Customer object that needs to be updated in the inventory
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+              required:
+                - name
+                - email
+                - phone
+      responses:
+        "200":
+          description: Customer updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customer:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Customer not found
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    delete:
+      tags:
+        - customers
+      summary: Delete a customer
+      description: Delete a customer from the inventory
+      operationId: deleteCustomer
+      parameters:
+        - name: id
+          in: path
+          description: ID of the customer to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: Customer deleted
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Customer not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    patch:
+      tags:
+        - customers
+      summary: Update a customer
+      description: Update a customer in the inventory
+      operationId: partialUpdateCustomer
+      parameters:
+        - name: id
+          in: path
+          description: ID of the customer to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Customer object that needs to be updated in the inventory
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+      responses:
+        "200":
+          description: Customer updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customer:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - email
+                      - phone
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: ""
+                message:
+                  type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Customer not found
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /customers/{id}/order:
+    get:
+      tags:
+        - customers
+      summary: Get all orders of a customer
+      description: return all orders of a customer in json object
+      operationId: getOrdersOfCustomer
+      parameters:
+        - name: id
+          in: path
+          description: ID of the customer to return its orders
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        item_id:
+                          type: integer
+                          format: int64
+                        customer_id:
+                          type: integer
+                          format: int64
+                        quantity:
+                          type: integer
+                          format: int32
+                        date:
+                          type: string
+                          format: date
+                      required:
+                        - id
+                        - item_id
+                        - customer_id
+                        - quantity
+                        - date
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Customer not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    post:
+      tags:
+        - customers
+      summary: Add a new order for a customer
+      description: Add a new order to the inventory
+      operationId: addOrderForCustomer
+      requestBody:
+        description: Order object that needs to be added to the inventory without the id
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                customer_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+              required:
+                - item_id
+                - customer_id
+                - quantity
+      responses:
+        "201":
+          description: Order created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      customer_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      date:
+                        type: string
+                        format: date
+                    required:
+                      - id
+                      - item_id
+                      - customer_id
+                      - quantity
+                      - date
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /orders:
+    get:
+      tags:
+        - orders
+      summary: Get all orders
+      description: return all orders in json object
+      operationId: getOrders
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        item_id:
+                          type: integer
+                          format: int64
+                        customer_id:
+                          type: integer
+                          format: int64
+                        quantity:
+                          type: integer
+                          format: int32
+                        date:
+                          type: string
+                          format: date
+                      required:
+                        - id
+                        - item_id
+                        - customer_id
+                        - quantity
+                        - date
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    post:
+      tags:
+        - orders
+      summary: Add a new order
+      description: Add a new order to the inventory
+      operationId: addOrder
+      requestBody:
+        description: Order object that needs to be added to the inventory without the id
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                customer_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+              required:
+                - item_id
+                - customer_id
+                - quantity
+      responses:
+        "201":
+          description: Order created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      customer_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      date:
+                        type: string
+                        format: date
+                    required:
+                      - id
+                      - item_id
+                      - customer_id
+                      - quantity
+                      - date
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /orders/{id}:
+    get:
+      tags:
+        - orders
+      summary: Get an order by id
+      description: Returns a single order in json object
+      operationId: getOrderById
+      parameters:
+        - name: id
+          in: path
+          description: ID of the order to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      customer_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      date:
+                        type: string
+                        format: date
+                    required:
+                      - id
+                      - item_id
+                      - customer_id
+                      - quantity
+                      - date
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Order not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    put:
+      tags:
+        - orders
+      summary: Update an order
+      description: Update an order in the inventory
+      operationId: updateOrder
+      parameters:
+        - name: id
+          in: path
+          description: ID of the order to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Order object that needs to be updated in the inventory
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                customer_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+              required:
+                - item_id
+                - customer_id
+                - quantity
+      responses:
+        "200":
+          description: Order updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      customer_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      date:
+                        type: string
+                        format: date
+                    required:
+                      - id
+                      - item_id
+                      - customer_id
+                      - quantity
+                      - date
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Order not found
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    delete:
+      tags:
+        - orders
+      summary: Delete an order
+      description: Delete an order from the inventory
+      operationId: deleteOrder
+      parameters:
+        - name: id
+          in: path
+          description: ID of the order to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: Order deleted
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Order not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    patch:
+      tags:
+        - orders
+      summary: partial Update an order
+      description: partial Update an order in the inventory
+      operationId: partialUpdateOrder
+      parameters:
+        - name: id
+          in: path
+          description: ID of the order to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Order object that needs to be updated in the inventory
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                customer_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+      responses:
+        "200":
+          description: Order updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      customer_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      date:
+                        type: string
+                        format: date
+                    required:
+                      - id
+                      - item_id
+                      - customer_id
+                      - quantity
+                      - date
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: ""
+                message:
+                  type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Order not found
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /orders/{id}/item:
+    get:
+      tags:
+        - orders
+      summary: Get all items of an order
+      description: Returns a items of an order in json object
+      operationId: getItemsOfOrder
+      parameters:
+        - name: id
+          in: path
+          description: ID of the order to return its items
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: number
+                          format: double
+                        quantity:
+                          type: integer
+                          format: int32
+                      required:
+                        - id
+                        - name
+                        - description
+                        - price
+                        - quantity
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Order not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /supplies:
+    get:
+      tags:
+        - supplies
+      summary: Get all supplies
+      description: return all supplies in json object
+      operationId: getSupplies
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  supplies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        item_id:
+                          type: integer
+                          format: int64
+                        supplier_id:
+                          type: integer
+                          format: int64
+                        quantity:
+                          type: integer
+                          format: int32
+                        price_per_unit:
+                          type: number
+                          format: double
+                      required:
+                        - id
+                        - item_id
+                        - supplier_id
+                        - quantity
+                        - price_per_unit
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    post:
+      tags:
+        - supplies
+      summary: Add a new supply
+      description: Add a new supply to the inventory
+      operationId: addSupply
+      requestBody:
+        description: Supply object that needs to be added to the inventory without the id
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                supplier_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+                price_per_unit:
+                  type: number
+                  format: double
+              required:
+                - item_id
+                - supplier_id
+                - quantity
+                - price_per_unit
+      responses:
+        "201":
+          description: Supply created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  supply:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      supplier_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      price_per_unit:
+                        type: number
+                        format: double
+                    required:
+                      - id
+                      - item_id
+                      - supplier_id
+                      - quantity
+                      - price_per_unit
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+  /supplies/{id}:
+    get:
+      tags:
+        - supplies
+      summary: Get a supply by id
+      description: Returns a single supply in json object
+      operationId: getSupplyById
+      parameters:
+        - name: id
+          in: path
+          description: ID of the supply to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  supply:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      supplier_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      price_per_unit:
+                        type: number
+                        format: double
+                    required:
+                      - id
+                      - item_id
+                      - supplier_id
+                      - quantity
+                      - price_per_unit
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Supply not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    put:
+      tags:
+        - supplies
+      summary: Update a supply
+      description: Update a supply in the inventory
+      operationId: updateSupply
+      parameters:
+        - name: id
+          in: path
+          description: ID of the supply to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Supply object that needs to be updated in the inventory
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                supplier_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+                price_per_unit:
+                  type: number
+                  format: double
+              required:
+                - item_id
+                - supplier_id
+                - quantity
+                - price_per_unit
+      responses:
+        "200":
+          description: Supply updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  supply:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      supplier_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      price_per_unit:
+                        type: number
+                        format: double
+                    required:
+                      - id
+                      - item_id
+                      - supplier_id
+                      - quantity
+                      - price_per_unit
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Supply not found
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    delete:
+      tags:
+        - supplies
+      summary: Delete a supply
+      description: Delete a supply from the inventory
+      operationId: deleteSupply
+      parameters:
+        - name: id
+          in: path
+          description: ID of the supply to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: Supply deleted
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Supply not found
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+    patch:
+      tags:
+        - supplies
+      summary: Update a supply
+      description: Update a supply in the inventory
+      operationId: partialUpdateSupply
+      parameters:
+        - name: id
+          in: path
+          description: ID of the supply to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Supply object that needs to be updated in the inventory
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  format: int64
+                supplier_id:
+                  type: integer
+                  format: int64
+                quantity:
+                  type: integer
+                  format: int32
+                price_per_unit:
+                  type: number
+                  format: double
+      responses:
+        "200":
+          description: Supply updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  supply:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                      item_id:
+                        type: integer
+                        format: int64
+                      supplier_id:
+                        type: integer
+                        format: int64
+                      quantity:
+                        type: integer
+                        format: int32
+                      price_per_unit:
+                        type: number
+                        format: double
+                    required:
+                      - id
+                      - item_id
+                      - supplier_id
+                      - quantity
+                      - price_per_unit
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "401":
+          description: Unauthorized Access
+        "403":
+          description: Forbidden Access
+        "404":
+          description: Supply not found
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too many requests
+        "500":
+          description: Internal Server Error
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+          format: double
+        quantity:
+          type: integer
+          format: int32
+      required:
+        - id
+        - name
+        - description
+        - price
+        - quantity
+    Item-creation:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+          format: double
+      required:
+        - name
+        - description
+        - price
+    Supplier:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+      required:
+        - id
+        - name
+        - email
+        - phone
+    Supplier-creation:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+      required:
+        - name
+        - email
+        - phone
+    Supply:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        item_id:
+          type: integer
+          format: int64
+        supplier_id:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+          format: int32
+        price_per_unit:
+          type: number
+          format: double
+      required:
+        - id
+        - item_id
+        - supplier_id
+        - quantity
+        - price_per_unit
+    Supply-creation:
+      type: object
+      properties:
+        item_id:
+          type: integer
+          format: int64
+        supplier_id:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+          format: int32
+        price_per_unit:
+          type: number
+          format: double
+      required:
+        - item_id
+        - supplier_id
+        - quantity
+        - price_per_unit
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+      required:
+        - id
+        - name
+        - email
+        - phone
+    Customer-creation:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+      required:
+        - name
+        - email
+        - phone
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        item_id:
+          type: integer
+          format: int64
+        customer_id:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+          format: int32
+        date:
+          type: string
+          format: date
+      required:
+        - id
+        - item_id
+        - customer_id
+        - quantity
+        - date
+    Order-creation:
+      type: object
+      properties:
+        item_id:
+          type: integer
+          format: int64
+        customer_id:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+          format: int32
+      required:
+        - item_id
+        - customer_id
+        - quantity
