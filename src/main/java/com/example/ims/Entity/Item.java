@@ -6,16 +6,18 @@ import lombok.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "Item")
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
+@Entity
+@Table(name = "Item")
 public class Item implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long itemId;
 
     @Column(name = "Name", nullable = false)

@@ -6,12 +6,13 @@ import lombok.*;
 
 import java.io.Serializable;
 
-@Entity
-@Table(name = "OrderDetail")
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
+@Entity
+@Table(name = "Order_Detail")
 public class OrderDetail implements Serializable {
 
     @Id
@@ -20,9 +21,9 @@ public class OrderDetail implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "OrderID", nullable = false)
-    private Order order;
+    private Orders order;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "ItemID", nullable = false)
     private Item item;
 

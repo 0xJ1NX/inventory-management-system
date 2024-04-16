@@ -5,16 +5,17 @@ import lombok.*;
 
 import java.io.Serializable;
 
-@Entity
-@Table(name = "Customer")
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "Customer")
 public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long customerId;
 
     @Column(name = "Name", nullable = false)

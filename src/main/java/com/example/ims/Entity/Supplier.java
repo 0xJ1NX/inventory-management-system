@@ -8,15 +8,18 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 
-@Entity
-@Table(name = "Supplier")
+
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
+@Entity
+@Table(name = "Supplier")
 public class Supplier implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long supplierId;
 
     @Column(name = "Name", nullable = false)

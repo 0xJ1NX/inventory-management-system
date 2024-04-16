@@ -7,19 +7,22 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name = "Order")
+
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order implements Serializable {
+
+@Entity
+@Table(name = "Orders")
+public class Orders implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long orderId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "CustomerID", nullable = false)
     private Customer customer;
 
