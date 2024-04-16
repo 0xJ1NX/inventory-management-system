@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.Objects;
 
@@ -28,11 +30,44 @@ import java.util.Objects;
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
 
+    /**
+     * Handle NoHandlerFoundException.
+     *
+     * @param ex        NoHandlerFoundException
+     * @param headers   HttpHeaders
+     * @param status    HttpStatus
+     * @param request   WebRequest
+     * @return the ResponseEntity object with the APIResponse object in the body
+     */
+    @Override
+    protected ResponseEntity<Object> handleNoHandlerFoundException(NoHandlerFoundException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+        log.error("No handler found for the request: {}", ex.getMessage());
+        APIResponse<Object> response = APIResponse.badRequest(null, String.format("Could not find the %s method for URL %s", ex.getHttpMethod(), ex.getRequestURL()));
+        return ResponseEntity.status(status).body(response);
+    }
+
+    /**
+     * Handle NoResourceFoundException when a resource is not found.
+     * @param ex NoResourceFoundException
+     * @param request WebRequest
+     * @param status HttpStatusCode
+     * @param headers HttpHeaders
+     * @return the ResponseEntity object with the APIResponse object in the body
+     */
+    @Override
+    protected ResponseEntity<Object> handleNoResourceFoundException(
+            NoResourceFoundException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+        log.error("Resource not found: {}", ex.getMessage());
+        APIResponse<Object> response = APIResponse.notFound(null, ex.getMessage());
+        return ResponseEntity.status(status).body(response);
+    }
+
+
 
     /**
      * Handle HttpRequestMethodNotSupportedException. Happens when you send a request with an unsupported HTTP method.
      *
-     * @param ex      HttpRequestMethodNotSupportedException
+     * @param ex     HttpRequestMethodNotSupportedException
      * @param headers HttpHeaders
      * @param status  HttpStatus
      * @param request WebRequest
@@ -128,11 +163,11 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     /**
      * Handle all other internal exceptions. This is a fallback for all other internal exceptions that don't have a specific handler.
      *
-     * @param ex      Exception
-     * @param request WebRequest
-     * @param headers HttpHeaders
-     * @param status  HttpStatus
-     * @param request WebRequest
+     * @param ex        Exception
+     * @param request   WebRequest
+     * @param headers   HttpHeaders
+     * @param status    HttpStatus
+     * @param request   WebRequest
      * @return the ResponseEntity object with the APIResponse object in the body
      */
     @Override
@@ -146,8 +181,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     /**
      * Handle MethodArgumentTypeMismatchException. Happens when a method argument is not the expected type.
      *
-     * @param ex      MethodArgumentTypeMismatchException
-     * @param request WebRequest
+     * @param ex        MethodArgumentTypeMismatchException
+     * @param request   WebRequest
      * @return the ResponseEntity object with the APIResponse object in the body
      */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
@@ -163,7 +198,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     /**
      * Handle all other exceptions. This is a fallback for all other exceptions that don't have a specific handler.
      *
-     * @param ex Exception
+     * @param ex    Exception
      * @return the ResponseEntity object with the APIResponse object in the body
      */
     @ExceptionHandler(Exception.class)
@@ -189,7 +224,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
      */
     @ExceptionHandler(ResourceNotFoundException.class)
     protected ResponseEntity<Object> handleResourceNotFound(ResourceNotFoundException ex) {
-        log.error("Resource not found: {}", ex.getMessage());
+        log.error("the needed Resource not found: {}", ex.getMessage());
         APIResponse<Object> response = APIResponse.notFound(null, ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }

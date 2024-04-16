@@ -51,6 +51,17 @@ public class CustomersService implements CustomersServiceInterface {
             throw new BadRequestException("Id should be null when creating a new customer");
         }
 
+        //check if the user already exists by phone number
+        if (customersRepository.findByPhone(customerDTO.getPhone()) != null) {
+            throw new BadRequestException("Customer with phone number " + customerDTO.getPhone() + " already exists");
+        }
+
+        //check if the user already exists by email
+        if (customersRepository.findByEmail(customerDTO.getEmail()) != null) {
+            throw new BadRequestException("email already exists");
+        }
+
+
         Customer customer = Customer.builder()
                 .name(customerDTO.getName())
                 .address(customerDTO.getAddress())

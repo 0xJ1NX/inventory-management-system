@@ -3,6 +3,7 @@ package com.example.ims.controller;
 import com.example.ims.dto.CustomerDTO;
 import com.example.ims.dto.response.APIResponse;
 import com.example.ims.service.CustomersServiceInterface;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +34,7 @@ public class CustomersController {
 
 
     @PostMapping
-    public ResponseEntity<Object> createCustomer(@RequestBody CustomerDTO customer) {
+    public ResponseEntity<Object> createCustomer(@Valid @RequestBody CustomerDTO customer) {
         log.info("Request to create a new customer: {}", customer);
         APIResponse<CustomerDTO> response = customersServices.createCustomer(customer);
         return ResponseEntity.status(response.getHttpStatus()).body(response);
