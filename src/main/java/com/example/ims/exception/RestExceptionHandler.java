@@ -67,10 +67,10 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     /**
      * Handle HttpRequestMethodNotSupportedException. Happens when you send a request with an unsupported HTTP method.
      *
-     * @param ex     HttpRequestMethodNotSupportedException
-     * @param headers HttpHeaders
-     * @param status  HttpStatus
-     * @param request WebRequest
+     * @param ex        HttpRequestMethodNotSupportedException
+     * @param headers   HttpHeaders
+     * @param status    HttpStatus
+     * @param request   WebRequest
      * @return the ResponseEntity object with the APIResponse object in the body
      */
     @Override
@@ -124,10 +124,10 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     /**
      * Handle MethodArgumentNotValidException. Triggered when an object fails @Valid validation.
      *
-     * @param ex      the MethodArgumentNotValidException that is thrown when @Valid validation fails
-     * @param headers HttpHeaders
-     * @param status  HttpStatus
-     * @param request WebRequest
+     * @param ex        MethodArgumentNotValidException
+     * @param headers   HttpHeaders
+     * @param status    HttpStatus
+     * @param request   WebRequest
      * @return the ResponseEntity object with the APIResponse object in the body
      */
     @Override
@@ -144,9 +144,9 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     /**
      * Handle HttpMessageNotReadableException. Happens when request JSON is malformed.
      *
-     * @param ex      HttpMessageNotReadableException
-     * @param headers HttpHeaders
-     * @param status  HttpStatus
+     * @param ex        HttpMessageNotReadableException
+     * @param headers   HttpHeaders
+     * @param status    HttpStatus
      * @param request WebRequest
      * @return the ResponseEntity object with the APIResponse object in the body
      */
@@ -164,7 +164,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
      * Handle all other internal exceptions. This is a fallback for all other internal exceptions that don't have a specific handler.
      *
      * @param ex        Exception
-     * @param request   WebRequest
+     * @param body      Object
      * @param headers   HttpHeaders
      * @param status    HttpStatus
      * @param request   WebRequest
@@ -244,21 +244,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 
-
-//    @ExceptionHandler(ForbiddenException.class)
-//    protected ResponseEntity<Object> handleForbidden(ForbiddenException ex) {
-//        log.error("Forbidden: {}", ex.getMessage());
-//        APIResponse<Object> response = APIResponse.forbidden(null, ex.getMessage());
-//        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
-//    }
-//
-//    @ExceptionHandler(UnauthorizedException.class)
-//    protected ResponseEntity<Object> handleUnauthorized(UnauthorizedException ex) {
-//        log.error("Unauthorized: {}", ex.getMessage());
-//        APIResponse<Object> response = APIResponse.unauthorized(null, ex.getMessage());
-//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
-//    }
-//
 
 
 
