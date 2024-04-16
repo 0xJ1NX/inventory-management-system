@@ -12,12 +12,12 @@ import java.io.Serializable;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "Order_Detail")
+@Table(name = "Order_Item")
 public class OrderDetail implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderDetailId;
+    private Long orderItemId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "OrderID", nullable = false)
