@@ -27,6 +27,17 @@ import java.util.Objects;
 @Slf4j
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
+
+
+    /**
+     * Handle HttpRequestMethodNotSupportedException. Happens when you send a request with an unsupported HTTP method.
+     *
+     * @param ex      HttpRequestMethodNotSupportedException
+     * @param headers HttpHeaders
+     * @param status  HttpStatus
+     * @param request WebRequest
+     * @return the ResponseEntity object with the APIResponse object in the body
+     */
     @Override
     protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         log.error("Method not allowed: {}", ex.getMessage());
@@ -34,6 +45,17 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(status).body(response);
     }
 
+
+    /**
+     * Handle HttpMediaTypeNotSupportedException. This one triggers when a client POSTs, PUTs, or PATCHes
+     * content of a type not supported by request handler.
+     *
+     * @param ex      HttpMediaTypeNotSupportedException
+     * @param headers HttpHeaders
+     * @param status  HttpStatus
+     * @param request WebRequest
+     * @return the ResponseEntity object with the APIResponse object in the body
+     */
     @Override
     protected ResponseEntity<Object> handleHttpMediaTypeNotSupported(HttpMediaTypeNotSupportedException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         log.error("Media type not supported: {}", ex.getMessage());
@@ -45,6 +67,18 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(status).body(response);
     }
 
+
+
+
+    /**
+     * Handle MissingServletRequestParameterException. Triggered when a 'required' request parameter is missing.
+     *
+     * @param ex      MissingServletRequestParameterException
+     * @param headers HttpHeaders
+     * @param status  HttpStatus
+     * @param request WebRequest
+     * @return the ResponseEntity object with the APIResponse object in the body
+     */
     @Override
     protected ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         log.error("Missing request parameter: {}", ex.getMessage());
@@ -52,6 +86,15 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(status).body(response);
     }
 
+    /**
+     * Handle MethodArgumentNotValidException. Triggered when an object fails @Valid validation.
+     *
+     * @param ex      the MethodArgumentNotValidException that is thrown when @Valid validation fails
+     * @param headers HttpHeaders
+     * @param status  HttpStatus
+     * @param request WebRequest
+     * @return the ResponseEntity object with the APIResponse object in the body
+     */
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         log.error("Method argument not valid: {}", ex.getMessage());
@@ -62,6 +105,16 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(status).body(response);
     }
 
+
+    /**
+     * Handle HttpMessageNotReadableException. Happens when request JSON is malformed.
+     *
+     * @param ex      HttpMessageNotReadableException
+     * @param headers HttpHeaders
+     * @param status  HttpStatus
+     * @param request WebRequest
+     * @return the ResponseEntity object with the APIResponse object in the body
+     */
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         ServletWebRequest servletWebRequest = (ServletWebRequest) request;
@@ -71,6 +124,17 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 
+
+    /**
+     * Handle all other internal exceptions. This is a fallback for all other internal exceptions that don't have a specific handler.
+     *
+     * @param ex      Exception
+     * @param request WebRequest
+     * @param headers HttpHeaders
+     * @param status  HttpStatus
+     * @param request WebRequest
+     * @return the ResponseEntity object with the APIResponse object in the body
+     */
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         log.error("Internal server error: {}", ex.getMessage());
@@ -79,6 +143,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 
+    /**
+     * Handle MethodArgumentTypeMismatchException. Happens when a method argument is not the expected type.
+     *
+     * @param ex      MethodArgumentTypeMismatchException
+     * @param request WebRequest
+     * @return the ResponseEntity object with the APIResponse object in the body
+     */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     protected ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException ex,
                                                                       WebRequest request) {
@@ -87,6 +158,74 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 
     }
+
+
+    /**
+     * Handle all other exceptions. This is a fallback for all other exceptions that don't have a specific handler.
+     *
+     * @param ex Exception
+     * @return the ResponseEntity object with the APIResponse object in the body
+     */
+    @ExceptionHandler(Exception.class)
+    protected ResponseEntity<Object> handleException(Exception ex) {
+        log.error("Internal server error: {}", ex.getMessage());
+        APIResponse<Object> response = APIResponse.internalServerError(null, "An internal server error occurred.");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+    }
+
+
+
+
+    //----------------------------------- Custom Exceptions -----------------------------------
+
+
+
+
+    /**
+     * Handle ResourceNotFoundException. Triggered when a resource is not found.
+     *
+     * @param ex ResourceNotFoundException
+     * @return the ResponseEntity object with the APIResponse object in the body
+     */
+    @ExceptionHandler(ResourceNotFoundException.class)
+    protected ResponseEntity<Object> handleResourceNotFound(ResourceNotFoundException ex) {
+        log.error("Resource not found: {}", ex.getMessage());
+        APIResponse<Object> response = APIResponse.notFound(null, ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+    }
+
+
+    /**
+     * Handle BadRequestException. Triggered when a bad request is made.
+     *
+     * @param ex BadRequestException
+     * @return the ResponseEntity object with the APIResponse object in the body
+     */
+    @ExceptionHandler(BadRequestException.class)
+    protected ResponseEntity<Object> handleBadRequest(BadRequestException ex) {
+        log.error("Bad request: {}", ex.getMessage());
+        APIResponse<Object> response = APIResponse.badRequest(null, ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+
+
+//    @ExceptionHandler(ForbiddenException.class)
+//    protected ResponseEntity<Object> handleForbidden(ForbiddenException ex) {
+//        log.error("Forbidden: {}", ex.getMessage());
+//        APIResponse<Object> response = APIResponse.forbidden(null, ex.getMessage());
+//        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
+//    }
+//
+//    @ExceptionHandler(UnauthorizedException.class)
+//    protected ResponseEntity<Object> handleUnauthorized(UnauthorizedException ex) {
+//        log.error("Unauthorized: {}", ex.getMessage());
+//        APIResponse<Object> response = APIResponse.unauthorized(null, ex.getMessage());
+//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+//    }
+//
+
+
 
 
 
