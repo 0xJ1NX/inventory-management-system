@@ -242,11 +242,10 @@ the following are the resources in the inventory management system API
     "quantity": 0
   }
 }
+
 ```
 
-
 </td>
-
     </tr>
     <tr>
 <td>
