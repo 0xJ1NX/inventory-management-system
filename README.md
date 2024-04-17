@@ -96,7 +96,7 @@ the following are the resources in the inventory management system API
     <img src="./images/postman-icon.svg" alt="Postman"  width="130" >
 </p>
 
-- The Postman collection is in the following file [Postman Collection](./postman/)
+- The Postman collection is in the following file [Postman Collection](./postman/IMA.postman_collection.json)
 
 ## 📦 Running the project
 - Clone the repository
