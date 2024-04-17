@@ -103,10 +103,6 @@ public class ItemsService implements ItemsServiceInterface {
 
         Item item = itemsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(Item.class, "id", id.toString()));
 
-        //check if the item already exists by name
-        if (itemsRepository.findByName(itemDTO.getName()) != null) {
-            throw new BadRequestException("Item with name " + itemDTO.getName() + " already exists");
-        }
 
         item.setName(itemDTO.getName());
         item.setDescription(itemDTO.getDescription());

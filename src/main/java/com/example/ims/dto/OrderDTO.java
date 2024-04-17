@@ -2,6 +2,7 @@ package com.example.ims.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,7 +18,7 @@ public class OrderDTO {
 
     private Date date;
 
-    @NotBlank(message = "Customer ID is required")
+    @NotNull(message = "Customer ID is required")
     private Long customerId;
 
     @JsonAlias("orderItems")
