@@ -8,6 +8,7 @@ import com.example.ims.dto.response.APIResponse;
 import com.example.ims.exception.BadRequestException;
 import com.example.ims.exception.ResourceNotFoundException;
 import com.example.ims.repository.ItemsRepository;
+import com.example.ims.repository.SuppliersRepository;
 import com.example.ims.repository.SuppliesRepository;
 import com.example.ims.service.SuppliesServiceInterface;
 
@@ -25,11 +26,13 @@ public class SuppliesService implements SuppliesServiceInterface {
 
     private final SuppliesRepository suppliesRepository;
     private final ItemsRepository itemsRepository;
+    private final SuppliersRepository suppliersRepository;
 
     @Autowired
-    public SuppliesService(SuppliesRepository suppliesRepository, ItemsRepository itemsRepository) {
+    public SuppliesService(SuppliesRepository suppliesRepository, ItemsRepository itemsRepository, SuppliersRepository supplier) {
         this.suppliesRepository = suppliesRepository;
         this.itemsRepository = itemsRepository;
+        this.suppliersRepository = supplier;
     }
 
     @Override
@@ -43,6 +46,7 @@ public class SuppliesService implements SuppliesServiceInterface {
                         .itemId(supply.getItem().getItemId())
                         .quantity(supply.getQuantity())
                         .ppu(supply.getPpu().doubleValue())
+                        .supplierId(supply.getSupplier().getSupplierId())
                         .date(supply.getDate())
                         .build())
                 .toList();
@@ -64,13 +68,19 @@ public class SuppliesService implements SuppliesServiceInterface {
 
         //check if the item exists
         if (itemsRepository.findById(supplyDTO.getItemId()).isEmpty()) {
-            throw new BadRequestException("Item with id " + supplyDTO.getItemId() + " does not exist");
+            throw new ResourceNotFoundException(Item.class, "id", supplyDTO.getItemId().toString());
+        }
+
+        //check if supplier exists
+        if (suppliersRepository.findById(supplyDTO.getSupplierId()).isEmpty()) {
+            throw new ResourceNotFoundException(Supplier.class, "id", supplyDTO.getSupplierId().toString());
         }
 
         Supply supply = Supply.builder()
                 .item(itemsRepository.findById(supplyDTO.getItemId()).get())
                 .quantity(supplyDTO.getQuantity())
                 .ppu(BigDecimal.valueOf(supplyDTO.getPpu()))
+                .supplier(suppliersRepository.findById(supplyDTO.getSupplierId()).get())
                 .date(new Date())
                 .build();
 
@@ -87,6 +97,7 @@ public class SuppliesService implements SuppliesServiceInterface {
                 .itemId(supply.getItem().getItemId())
                 .quantity(supply.getQuantity())
                 .ppu(supply.getPpu().doubleValue())
+                .supplierId(supply.getSupplier().getSupplierId())
                 .date(supply.getDate())
                 .build(), "Supply created successfully");
 
@@ -104,6 +115,7 @@ public class SuppliesService implements SuppliesServiceInterface {
                 .itemId(supply.getItem().getItemId())
                 .quantity(supply.getQuantity())
                 .ppu(supply.getPpu().doubleValue())
+                .supplierId(supply.getSupplier().getSupplierId())
                 .date(supply.getDate())
                 .build();
 
@@ -133,7 +145,7 @@ public class SuppliesService implements SuppliesServiceInterface {
         }
 
         //check if supplier exists
-        if (suppliesRepository.findById(supplyDTO.getSupplierId()).isEmpty()) {
+        if (suppliersRepository.findById(supplyDTO.getSupplierId()).isEmpty()) {
             throw new ResourceNotFoundException(Supplier.class, "id", supplyDTO.getSupplierId().toString());
         }
 
@@ -158,6 +170,7 @@ public class SuppliesService implements SuppliesServiceInterface {
         SupplyDTO updatedSupplyDTO = SupplyDTO.builder()
                 .id(supply.getSupplyID())
                 .itemId(supply.getItem().getItemId())
+                .supplierId(supply.getSupplier().getSupplierId())
                 .quantity(supply.getQuantity())
                 .ppu(supply.getPpu().doubleValue())
                 .date(supply.getDate())
@@ -228,6 +241,15 @@ public class SuppliesService implements SuppliesServiceInterface {
             supply.setPpu(BigDecimal.valueOf(supplyDTO.getPpu()));
         }
 
+        if (supplyDTO.getSupplierId() != null) {
+            //check if supplier exists
+            Optional<Supplier> supplierOptional = suppliersRepository.findById(supplyDTO.getSupplierId());
+            if (supplierOptional.isEmpty()) {
+                throw new ResourceNotFoundException(Supplier.class, "id", supplyDTO.getSupplierId().toString());
+            }
+            supply.setSupplier(supplierOptional.get());
+        }
+
         suppliesRepository.save(supply);
 
         SupplyDTO updatedSupplyDTO = SupplyDTO.builder()
@@ -235,6 +257,7 @@ public class SuppliesService implements SuppliesServiceInterface {
                 .itemId(supply.getItem().getItemId())
                 .quantity(supply.getQuantity())
                 .ppu(supply.getPpu().doubleValue())
+                .supplierId(supply.getSupplier().getSupplierId())
                 .date(supply.getDate())
                 .build();
 

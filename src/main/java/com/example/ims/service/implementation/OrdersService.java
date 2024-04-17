@@ -174,15 +174,6 @@ public class OrdersService implements OrdersServiceInterface {
         order.setCustomer(customer);
         ordersRepository.save(order);
 
-        //check if the item exists
-        for (OrderItemsDTO orderItemsDTO : orderDTO.getOrderItemsDTOS()) {
-
-            if (!itemsRepository.existsById(orderItemsDTO.getItemId())) {
-                throw new ResourceNotFoundException(Item.class, "id", orderItemsDTO.getItemId().toString());
-            }
-
-        }
-
 
         //delete all the order items and reset the item quantity
         for (OrderItem orderItem : orderItemRepository.findAllByOrder(order)) {
@@ -193,6 +184,18 @@ public class OrdersService implements OrdersServiceInterface {
             orderItemRepository.delete(orderItem);
         }
 
+        //check if the item exists and quantity is enough
+        for (OrderItemsDTO orderItemsDTO : orderDTO.getOrderItemsDTOS()) {
+
+            if (!itemsRepository.existsById(orderItemsDTO.getItemId())) {
+                throw new ResourceNotFoundException(Item.class, "id", orderItemsDTO.getItemId().toString());
+            }
+
+            Item item = itemsRepository.findById(orderItemsDTO.getItemId()).get();
+            if (item.getQuantity() < orderItemsDTO.getQuantity()) {
+                throw new BadRequestException("Item with id " + orderItemsDTO.getItemId() + " does not have enough quantity");
+            }
+        }
 
 
         //create the order items
@@ -267,13 +270,17 @@ public class OrdersService implements OrdersServiceInterface {
         //check if the order items attribute is present
         if (orderDTO.getOrderItemsDTOS() != null) {
 
-            //check if the item exists
+            //check if the item exists and quantity is enough
             for (OrderItemsDTO orderItemsDTO : orderDTO.getOrderItemsDTOS()) {
 
                 if (!itemsRepository.existsById(orderItemsDTO.getItemId())) {
                     throw new ResourceNotFoundException(Item.class, "id", orderItemsDTO.getItemId().toString());
                 }
 
+                Item item = itemsRepository.findById(orderItemsDTO.getItemId()).get();
+                if (item.getQuantity() < orderItemsDTO.getQuantity()) {
+                    throw new BadRequestException("Item with id " + orderItemsDTO.getItemId() + " does not have enough quantity");
+                }
             }
 
             //change the quantity of the items in the order
