@@ -37,7 +37,8 @@ and provide consistent and easy to use API.
   - [/orders](#orders)
   - [/supplies](#supplies)
 - [OpenAPI Documentation](#openapi-documentation)
-- [📦 Installation](#-installation)
+- [Postman Collection](#postman-collection)
+- [📦 Running the project](#-running-the-project)
 
 
 ## 🧰 Resources
