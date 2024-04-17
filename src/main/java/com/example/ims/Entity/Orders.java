@@ -15,6 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Orders")
+@Builder
 public class Orders implements Serializable {
 
     @Id
@@ -22,13 +23,14 @@ public class Orders implements Serializable {
 
     private Long orderId;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CustomerID", nullable = false)
     private Customer customer;
 
     @Column(name = "Date", nullable = false)
     private Date date;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderDetail> orderDetails;
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<OrderItem> orderItems;
+
 }

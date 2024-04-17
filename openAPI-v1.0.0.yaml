@@ -1998,20 +1998,6 @@ components:
         - description
         - price
         - quantity
-    Item-creation:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        price:
-          type: number
-          format: double
-      required:
-        - name
-        - description
-        - price
     Supplier:
       type: object
       properties:
@@ -2026,19 +2012,6 @@ components:
           type: string
       required:
         - id
-        - name
-        - email
-        - phone
-    Supplier-creation:
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-        phone:
-          type: string
-      required:
         - name
         - email
         - phone
@@ -2066,7 +2039,61 @@ components:
         - supplier_id
         - quantity
         - price_per_unit
-    Supply-creation:
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+      required:
+        - id
+        - name
+        - email
+        - phone
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 6
+          date:
+            type: string
+            format: date-time
+            example: 2024-04-17T16:30:31.840+00:00
+          customerId:
+            type: integer
+            format: int32
+            example: 12
+          orderItemsDTOS:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: int32
+                  example: 7
+                quantity:
+                  type: integer
+                  format: int32
+                  example: 2
+                itemId:
+                  type: integer
+                  format: int32
+                  example: 3
+            example:
+              id: 7
+              quantity: 2
+              itemId: 3
+
+    Supply-POST:
       type: object
       properties:
         item_id:
@@ -2086,24 +2113,7 @@ components:
         - supplier_id
         - quantity
         - price_per_unit
-    Customer:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        email:
-          type: string
-        phone:
-          type: string
-      required:
-        - id
-        - name
-        - email
-        - phone
-    Customer-creation:
+    Customer-POST:
       type: object
       properties:
         name:
@@ -2116,43 +2126,55 @@ components:
         - name
         - email
         - phone
-    Order:
+    Order-POST:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-        item_id:
-          type: integer
-          format: int64
-        customer_id:
-          type: integer
-          format: int64
-        quantity:
+        customerId:
           type: integer
           format: int32
-        date:
+          example: 12
+          orderItems:
+            type: array
+            items:
+              type: object
+              properties:
+                itemId:
+                  type: integer
+                  format: int32
+                  example: 3
+                quantity:
+                  type: integer
+                  format: int32
+                  example: 2
+            example:
+              itemId: 3
+              quantity: 2
+    Item-POST:
+      type: object
+      properties:
+        name:
           type: string
-          format: date
+        description:
+          type: string
+        price:
+          type: number
+          format: double
       required:
-        - id
-        - item_id
-        - customer_id
-        - quantity
-        - date
-    Order-creation:
+        - name
+        - description
+        - price
+    Supplier-POST:
       type: object
       properties:
-        item_id:
-          type: integer
-          format: int64
-        customer_id:
-          type: integer
-          format: int64
-        quantity:
-          type: integer
-          format: int32
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
       required:
-        - item_id
-        - customer_id
-        - quantity
+        - name
+        - email
+        - phone
+
+    Resp

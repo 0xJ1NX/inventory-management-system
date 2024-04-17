@@ -10,6 +10,7 @@ import com.example.ims.service.CustomersServiceInterface;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
@@ -44,6 +45,7 @@ public class CustomersService implements CustomersServiceInterface {
 
 
     @Override
+    @Transactional
     public APIResponse<CustomerDTO> createCustomer(CustomerDTO customerDTO) {
 
         //id should be null when creating a new customer
@@ -100,6 +102,7 @@ public class CustomersService implements CustomersServiceInterface {
     }
 
     @Override
+    @Transactional
     public APIResponse<CustomerDTO> updateCustomer(Long id, CustomerDTO customerDTO) {
         Customer customer = customersRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(Customer.class, "id", id.toString()));
@@ -123,6 +126,7 @@ public class CustomersService implements CustomersServiceInterface {
     }
 
     @Override
+    @Transactional
     public APIResponse<CustomerDTO> deleteCustomer(Long id) {
         Customer customer = customersRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(Customer.class, "id", id.toString()));
@@ -141,6 +145,7 @@ public class CustomersService implements CustomersServiceInterface {
     }
 
     @Override
+    @Transactional
     public APIResponse<CustomerDTO> partialUpdateCustomer(Long id, CustomerDTO customerDTO) {
         Customer customer = customersRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(Customer.class, "id", id.toString()));

@@ -13,7 +13,8 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "Order_Item")
-public class OrderDetail implements Serializable {
+@Builder
+public class OrderItem implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +24,7 @@ public class OrderDetail implements Serializable {
     @JoinColumn(name = "OrderID", nullable = false)
     private Orders order;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ItemID", nullable = false)
     private Item item;
 

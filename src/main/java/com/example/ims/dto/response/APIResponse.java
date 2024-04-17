@@ -88,6 +88,7 @@ public class APIResponse <T>{
                 .build();
     }
 
+
     /**
      * Creates an APIResponse for unauthorized access operation.
      * @param data             The data to include in the response.
@@ -103,6 +104,7 @@ public class APIResponse <T>{
                 .data(data)
                 .build();
     }
+
 
     /**
      * Creates an APIResponse for a forbidden access operation.

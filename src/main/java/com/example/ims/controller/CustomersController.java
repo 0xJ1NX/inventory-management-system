@@ -49,7 +49,7 @@ public class CustomersController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateCustomer(@PathVariable Long id, @RequestBody CustomerDTO customer) {
+    public ResponseEntity<Object> updateCustomer(@PathVariable Long id, @Valid @RequestBody CustomerDTO customer) {
         log.info("Request to update customer by id: {}", id);
         APIResponse<CustomerDTO> response = customersServices.updateCustomer(id, customer);
         return ResponseEntity.status(response.getHttpStatus()).body(response);
