@@ -4,7 +4,8 @@
   <img src="./images/inv-manage-sys.png" alt="Inventory Management System logo" width="300" >
 </p>
 
-This is a simple inventory management system REST API, that allow managing Items, Customers, Orders, Suppliers, and supplies.
+This is a simple inventory management system REST API, that allow managing Items, Customers, Orders, Suppliers, and supplies,
+and provide consistent and easy to use API.
 > [!NOTE]
 > The API still under development and the documentation is not complete yet.
 
